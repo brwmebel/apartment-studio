@@ -3,436 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Пакет стандарт для Студии</title>
+    <title>Пакет Стандарт для Студии | Мебель и Стиль</title>
+    <meta name="description" content="Коммерческое предложение: Пакет Стандарт для Студии. Полная комплектация мебелью. Три варианта на выбор в каждом модуле.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        :root {
+            --primary: #1a3b2e;
+            --primary-light: #2a5a45;
+            --accent: #d4b68a;
+            --accent-neon: #5cdb95;
+            --light: #f5f7f6;
+            --dark: #121212;
+            --gray: #6c757d;
+            --light-gray: #e0e5e2;
+            --transition: all 0.25s ease-out;
+            --radius: 4px;
+            --bg-dark: #0a0f0c;
+            --bg-card-dark: #111a15;
+            --text-dark: #e8edea;
+            --text-secondary-dark: #9aaba2;
+            --border-dark: #2a3a32;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            color: var(--dark);
             line-height: 1.6;
+            background-color: #fff;
+            overflow-x: hidden;
+            transition: background-color 0.3s, color 0.3s;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            font-weight: 400;
+            letter-spacing: -0.01em;
             scroll-behavior: smooth;
         }
-        header {
-            background: linear-gradient(to right, #2c3e50, #4a6491);
-            color: white;
-            padding: 40px 20px;
+
+        h1, h2, h3, h4, .btn, .checklist-title {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        h2 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.03em; }
+
+        body.dark-theme { background-color: var(--bg-dark); color: var(--text-dark); }
+
+        .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 2px solid var(--primary);
+            cursor: pointer;
+            transition: var(--transition);
             text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
         }
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: left 0.3s ease;
+            z-index: -1;
         }
-        header p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .btn:hover::before { left: 0; }
+        .btn:hover { color: white; border-color: var(--primary); }
+
+        body.dark-theme .btn { color: var(--accent); border-color: var(--accent); }
+        body.dark-theme .btn::before { background: var(--accent); }
+        body.dark-theme .btn:hover { color: var(--bg-dark); }
+
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: white;
+            padding: 35px 20px 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
+
+        .logo-divider { width: 60px; height: 3px; background: var(--accent); margin: 12px auto; }
+
+        header h1 { font-size: 2.6rem; font-weight: 800; margin-bottom: 6px; letter-spacing: -0.02em; }
+        header .subtitle { font-size: 0.9rem; color: rgba(255,255,255,0.7); letter-spacing: 4px; text-transform: uppercase; font-weight: 500; margin-bottom: 10px; }
+        header p { font-size: 1.05rem; max-width: 700px; margin: 0 auto; opacity: 0.9; line-height: 1.5; }
+        header .hint { margin-top: 8px; font-size: 0.85rem; opacity: 0.65; }
+
+        body.dark-theme header { border-bottom: 1px solid var(--border-dark); }
+
+        /* Section */
         .section {
             background: white;
-            border-radius: 12px;
-            padding: 30px;
+            border-radius: var(--radius);
+            padding: 35px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-left: 5px solid #4a6491;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            border: 1px solid var(--light-gray);
+            transition: background-color 0.3s, border-color 0.3s, box-shadow 0.3s;
         }
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+        body.dark-theme .section { background: var(--bg-card-dark); border-color: var(--border-dark); }
+
         .section h2 {
-            color: #2c3e50;
-            margin-bottom: 20px;
+            color: var(--primary);
+            margin-bottom: 8px;
             font-size: 1.8rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
+            transition: color 0.3s;
         }
-        .section h2::before {
-            content: "📦";
-            font-size: 1.5rem;
+
+        body.dark-theme .section h2 { color: var(--accent); }
+
+        .section > p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
         }
+
+        body.dark-theme .section > p { color: var(--text-secondary-dark); }
+
+        /* Variant Grid */
         .variant-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
+
         .variant-card {
-            background: #f1f5f9;
-            border-radius: 12px;
-            padding: 0;
-            border: 1px solid #d1d8e0;
-            transition: transform 0.3s;
+            background: white;
+            border-radius: var(--radius);
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            border: 1px solid var(--light-gray);
+            transition: var(--transition);
             position: relative;
         }
-        .variant-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+
+        body.dark-theme .variant-card { background: var(--bg-card-dark); border-color: var(--border-dark); }
+
         .variant-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--accent);
         }
-        .variant-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-bottom: 2px solid #4a6491;
-            cursor: pointer;
-        }
-        .variant-content {
-            padding: 20px;
-        }
-        .variant-card h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        .variant-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .variant-card li {
-            padding: 8px 0;
-            border-bottom: 1px dashed #ccc;
-        }
-        .variant-card li:last-child {
-            border-bottom: none;
-        }
-        .specs {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .spec-item {
-            background: #e8f4fc;
-            padding: 12px;
-            border-radius: 8px;
-        }
-        
-        /* Стили для карусели */
+
+        body.dark-theme .variant-card:hover { border-color: var(--accent-neon); }
+
+        /* Carousel */
         .carousel {
             position: relative;
             overflow: hidden;
-            border-radius: 10px 10px 0 0;
-            height: 220px;
-            background-color: white;
+            height: 260px;
+            background: white;
+            cursor: pointer;
         }
-        .carousel-inner {
-            display: flex;
-            transition: transform 0.5s ease;
-            height: 100%;
-        }
-        .carousel-item {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+
+        body.dark-theme .carousel { background: var(--bg-card-dark); }
+
+        .carousel-inner { display: flex; transition: transform 0.5s ease; height: 100%; }
+        .carousel-item { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+        /* Все фото в каруселях — contain (как в оригинале) */
         .carousel-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            cursor: pointer;
+            object-fit: contain;
+            background: white;
+            display: block;
         }
+
+        body.dark-theme .carousel-item img { background: var(--bg-card-dark); }
+
         .carousel-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            font-size: 24px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--primary);
+            transition: var(--transition);
             z-index: 10;
-            transition: background 0.3s;
+            opacity: 0.85;
         }
-        .carousel-btn:hover {
-            background: rgba(0,0,0,0.8);
-        }
-        .carousel-btn.prev {
-            left: 10px;
-        }
-        .carousel-btn.next {
-            right: 10px;
-        }
-        
-        /* Исправления для фото шкафа+тумбы */
-        .carousel-item img[src*="11.jpg"],
-        .carousel-item img[src*="21.jpg"],
-        .carousel-item img[src*="31.jpg"],
-        .carousel-item img[src*="12.jpg"],
-        .carousel-item img[src*="22.jpg"],
-        .carousel-item img[src*="32.jpg"],
-        .carousel-item img[src*="13.jpg"],
-        .carousel-item img[src*="23.jpg"],
-        .carousel-item img[src*="33.jpg"] {
-            object-fit: contain;
-            background-color: white;
-        }
-        
-        /* Стили для стульев */
-        .chairs-container {
-            margin-top: 40px;
-        }
-        .chairs-title {
-            color: #2c3e50;
-            margin-bottom: 20px;
-            font-size: 1.4rem;
-        }
-        .chairs-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-        .chair-item {
-            text-align: center;
-            width: 200px;
-            position: relative;
-        }
-        .chair-item img {
-            width: 100%;
-            height: 180px;
-            object-fit: contain;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            border: 2px solid #ddd;
-            transition: transform 0.3s;
-            padding: 5px;
-            cursor: pointer;
-        }
-        .chair-item img:hover {
-            transform: scale(1.05);
-        }
-        .chair-name {
-            margin-top: 10px;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .chair-note {
-            background: #f0f8ff;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #4a6491;
-            margin-top: 20px;
-        }
-        
-        /* Обеденная группа */
-        .section:nth-child(3) .carousel {
-            height: 250px;
-        }
-        .section:nth-child(3) .carousel-item img {
-            object-fit: contain;
-            background-color: #f5f5f5;
-        }
-        
-        /* Кухня */
-        .kitchen-photo {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            padding: 10px;
-            cursor: pointer;
-        }
-        
-        /* Прихожая */
-        .section:nth-child(4) .carousel-item img {
-            object-fit: contain;
-            background-color: white;
-        }
-        
-        .highlight {
-            background-color: #fff9e6;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            border-left: 5px solid #f1c40f;
-        }
-        
-        .package-details {
-            background-color: #f0f8ff;
-            padding: 25px;
-            border-radius: 10px;
-            margin-top: 30px;
-            border-left: 5px solid #4a6491;
-        }
-        
-        .package-details h3 {
-            color: #2c3e50;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
-        }
-        
-        .package-details ul {
-            list-style-type: disc;
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .package-details li {
-            margin-bottom: 8px;
-        }
-        
-        /* ========== НОВЫЕ ФИЧИ ========== */
-        
-        /* Прогресс-бар прокрутки */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: rgba(255,255,255,0.1);
-            z-index: 9999;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            background: linear-gradient(to right, #4a6491, #3498db);
-            width: 0%;
-            transition: width 0.3s ease;
-            box-shadow: 0 0 10px rgba(74, 100, 145, 0.5);
-        }
-        
-        /* Быстрая навигация */
-        .quick-nav {
-            position: fixed;
-            top: 50%;
-            right: 20px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1001;
-            background: rgba(255,255,255,0.95);
-            padding: 15px 10px;
-            border-radius: 25px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-        }
-        
-        .quick-nav a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            background: #f1f5f9;
-            border-radius: 50%;
-            color: #2c3e50;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .quick-nav a:hover {
-            background: #4a6491;
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .quick-nav a.active {
-            background: #4a6491;
-            color: white;
-            transform: scale(1.1);
-        }
-        
-        .quick-nav a::before {
-            content: attr(data-title);
+
+        body.dark-theme .carousel-btn { background: var(--bg-card-dark); border-color: var(--accent); color: var(--accent); }
+
+        .carousel-btn:hover { background: var(--primary); color: white; opacity: 1; }
+        body.dark-theme .carousel-btn:hover { background: var(--accent); color: var(--bg-dark); }
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+
+        /* Select button */
+        .select-btn {
             position: absolute;
-            right: 55px;
-            background: #2c3e50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-        }
-        
-        .quick-nav a:hover::before {
-            opacity: 1;
-        }
-        
-        /* VK кнопка */
-        .vk-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: linear-gradient(135deg, #0077FF, #4A90E2);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            z-index: 1000;
-            box-shadow: 0 6px 20px rgba(0, 119, 255, 0.4);
+            top: 12px;
+            right: 12px;
+            width: 36px;
+            height: 36px;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
-            opacity: 0;
-        }
-        
-        .vk-float:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 119, 255, 0.6);
-            background: linear-gradient(135deg, #0066CC, #3A80D2);
-        }
-        
-        .vk-icon {
-            font-size: 24px;
-            animation: bounce 2s infinite;
-        }
-        
-        .vk-text {
+            justify-content: center;
             font-size: 16px;
-            white-space: nowrap;
+            font-weight: 700;
+            color: var(--primary);
+            transition: var(--transition);
+            z-index: 12;
+            opacity: 0.9;
         }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 6px 20px rgba(0, 119, 255, 0.4); }
-            50% { box-shadow: 0 6px 25px rgba(0, 119, 255, 0.7); }
-            100% { box-shadow: 0 6px 20px rgba(0, 119, 255, 0.4); }
+
+        .select-btn:hover { background: var(--primary); color: white; opacity: 1; }
+        .select-btn.selected { background: var(--accent); border-color: var(--accent); color: white; }
+        body.dark-theme .select-btn { background: var(--bg-card-dark); border-color: var(--accent); color: var(--accent); }
+        body.dark-theme .select-btn.selected { background: var(--accent-neon); border-color: var(--accent-neon); color: var(--bg-dark); }
+
+        .variant-content { padding: 20px 25px; }
+        .variant-content h3 { color: var(--primary); margin-bottom: 12px; font-size: 1.3rem; font-weight: 700; transition: color 0.3s; }
+        body.dark-theme .variant-content h3 { color: var(--accent); }
+
+        .variant-content ul { list-style: none; padding-left: 0; }
+        .variant-content li { padding: 7px 0; border-bottom: 1px solid var(--light-gray); font-size: 0.9rem; color: var(--dark); transition: color 0.3s, border-color 0.3s; }
+        body.dark-theme .variant-content li { color: var(--text-secondary-dark); border-color: var(--border-dark); }
+        .variant-content li:last-child { border-bottom: none; }
+
+        /* Specs */
+        .specs {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
         }
-        
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+
+        .spec-item {
+            background: var(--light);
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+            color: var(--dark);
+            border: 1px solid var(--light-gray);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
-        
-        /* Модальное окно для фото */
+
+        body.dark-theme .spec-item { background: var(--bg-dark); color: var(--text-secondary-dark); border-color: var(--border-dark); }
+
+        /* Chairs */
+        .chairs-container { margin-top: 35px; }
+        .chairs-title { color: var(--primary); margin-bottom: 18px; font-size: 1.4rem; font-weight: 700; text-align: center; transition: color 0.3s; }
+        body.dark-theme .chairs-title { color: var(--accent); }
+
+        .chairs-grid { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; justify-content: center; }
+        .chair-item { text-align: center; width: 200px; position: relative; background: white; border-radius: var(--radius); border: 1px solid var(--light-gray); padding: 12px; transition: var(--transition); }
+
+        body.dark-theme .chair-item { background: var(--bg-card-dark); border-color: var(--border-dark); }
+
+        .chair-item:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.08); border-color: var(--accent); }
+        body.dark-theme .chair-item:hover { border-color: var(--accent-neon); }
+
+        .chair-item img { width: 100%; height: 160px; object-fit: contain; background: #f5f5f5; border-radius: var(--radius); padding: 5px; transition: background-color 0.3s; }
+        body.dark-theme .chair-item img { background: var(--bg-dark); }
+
+        .chair-item .select-btn { top: 16px; right: 16px; }
+        .chair-name { margin-top: 8px; font-weight: 600; color: var(--primary); font-size: 0.9rem; transition: color 0.3s; }
+        body.dark-theme .chair-name { color: var(--accent); }
+
+        .chair-note {
+            background: var(--light);
+            padding: 16px;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--accent);
+            margin-top: 20px;
+            color: var(--dark);
+            font-size: 0.9rem;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body.dark-theme .chair-note { background: var(--bg-dark); color: var(--text-secondary-dark); border-left-color: var(--accent-neon); }
+
+        /* Kitchen */
+        .kitchen-photo { width: 100%; height: 260px; object-fit: contain; background: #f5f5f5; display: block; padding: 10px; }
+        body.dark-theme .kitchen-photo { background: var(--bg-dark); }
+
+        /* Package details */
+        .package-details {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px 35px;
+            margin-top: 30px;
+            border: 1px solid var(--light-gray);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        body.dark-theme .package-details { background: var(--bg-card-dark); border-color: var(--border-dark); }
+
+        .package-details h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4rem; font-weight: 700; transition: color 0.3s; }
+        body.dark-theme .package-details h3 { color: var(--accent); }
+
+        .package-details ul { list-style-type: disc; padding-left: 20px; margin-bottom: 12px; }
+        .package-details li { margin-bottom: 6px; color: var(--dark); font-size: 0.95rem; transition: color 0.3s; }
+        body.dark-theme .package-details li { color: var(--text-secondary-dark); }
+
+        .package-details ul ul { list-style-type: circle; margin-top: 4px; }
+
+        /* Highlight */
+        .highlight {
+            background: white;
+            padding: 25px 30px;
+            border-radius: var(--radius);
+            margin-top: 20px;
+            border: 1px solid var(--light-gray);
+            border-left: 4px solid var(--accent);
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        body.dark-theme .highlight { background: var(--bg-card-dark); border-color: var(--border-dark); border-left-color: var(--accent-neon); }
+
+        .highlight h3 { color: var(--primary); margin-bottom: 10px; font-weight: 700; transition: color 0.3s; }
+        body.dark-theme .highlight h3 { color: var(--accent); }
+
+        .highlight p { color: var(--dark); font-size: 0.95rem; transition: color 0.3s; }
+        body.dark-theme .highlight p { color: var(--text-secondary-dark); }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        body.dark-theme footer { background-color: var(--primary); border-top: 1px solid var(--border-dark); }
+
+        footer p { margin-bottom: 6px; }
+        footer a { color: var(--accent); text-decoration: none; transition: color 0.3s; }
+        footer a:hover { color: white; }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -440,43 +380,38 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(10, 15, 12, 0.95);
             z-index: 2000;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s ease;
         }
-        
-        .modal.active {
-            display: flex;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 85%;
+
+        .modal.active { display: flex; }
+
+        .modal-content-wrapper {
             position: relative;
-            animation: zoomIn 0.3s ease;
+            max-width: 90%;
+            max-height: 85vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
-        
+
         .modal-img {
-            width: auto;
-            height: auto;
             max-width: 100%;
-            max-height: calc(85vh - 40px);
-            border-radius: 10px;
+            max-height: 85vh;
+            border-radius: var(--radius);
             box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             object-fit: contain;
+            border: 1px solid var(--border-dark);
         }
-        
+
         .modal-close {
-            position: absolute;
+            position: fixed;
             top: 20px;
-            right: 20px;
+            right: 30px;
             color: white;
-            font-size: 36px;
+            font-size: 2.5rem;
             cursor: pointer;
             background: none;
             border: none;
@@ -485,344 +420,225 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s;
-            z-index: 2001;
+            transition: color 0.3s, transform 0.3s;
+            z-index: 2002;
         }
-        
-        .modal-close:hover {
-            transform: scale(1.2);
-        }
-        
+
+        .modal-close:hover { color: var(--accent-neon); transform: scale(1.1); }
+        body.dark-theme .modal-close:hover { color: var(--accent); }
+
         .modal-nav {
-            position: absolute;
+            position: fixed;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255,255,255,0.2);
+            width: 56px;
+            height: 56px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: var(--radius);
             color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            font-size: 24px;
+            font-size: 1.8rem;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
-            opacity: 0.7;
+            transition: var(--transition);
             z-index: 2001;
         }
-        
-        .modal-nav:hover {
-            background: rgba(255,255,255,0.3);
-            opacity: 1;
-        }
-        
-        .modal-prev {
-            left: 20px;
-        }
-        
-        .modal-next {
-            right: 20px;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        @keyframes zoomIn {
-            from { transform: scale(0.8); opacity: 0; }
-            to { transform: scale(1); opacity: 1; }
-        }
-        
-        /* Для фотографий, которые можно увеличить */
-        .zoomable {
-            cursor: zoom-in;
-            transition: transform 0.3s;
-        }
-        
-        .zoomable:hover {
-            transform: scale(1.02);
-        }
-        
-        /* Интерактивный чек-лист */
+
+        .modal-nav:hover { background: var(--primary); border-color: var(--accent); transform: translateY(-50%) scale(1.05); }
+        body.dark-theme .modal-nav:hover { background: var(--accent); color: var(--bg-dark); }
+        .modal-prev { left: 30px; }
+        .modal-next { right: 30px; }
+
+        /* Checklist */
         .checklist-container {
             position: fixed;
             bottom: 100px;
-            left: 20px;
+            left: 24px;
             background: white;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            border-radius: var(--radius);
+            border: 1px solid var(--light-gray);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
             z-index: 1000;
             padding: 20px;
             width: 320px;
-            max-height: 450px;
+            max-height: 420px;
             overflow-y: auto;
             display: none;
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        
-        .checklist-container.active {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-        
+
+        body.dark-theme .checklist-container { background: var(--bg-card-dark); border-color: var(--border-dark); }
+        .checklist-container.active { display: block; }
+
         .checklist-toggle {
             position: fixed;
             bottom: 100px;
-            left: 20px;
-            background: #4a6491;
+            left: 24px;
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
             color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border: none;
-            font-size: 24px;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.1rem;
             cursor: pointer;
             z-index: 1001;
-            box-shadow: 0 5px 15px rgba(74, 100, 145, 0.4);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
+            transition: var(--transition);
         }
-        
-        .checklist-toggle:hover {
-            transform: scale(1.1);
-            background: #2c3e50;
-        }
-        
-        .checklist-toggle.active {
-            background: #2c3e50;
-        }
-        
+
+        body.dark-theme .checklist-toggle { background: var(--accent); color: var(--bg-dark); }
+        .checklist-toggle:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); background: var(--primary-light); }
+        body.dark-theme .checklist-toggle:hover { background: var(--accent); }
+        .checklist-toggle.active { background: var(--primary-light); }
+
         .checklist-counter {
             position: absolute;
-            top: -5px;
-            right: -5px;
+            top: -8px;
+            right: -8px;
             background: #e74c3c;
             color: white;
-            font-size: 12px;
-            font-weight: bold;
-            width: 22px;
-            height: 22px;
+            font-size: 11px;
+            font-weight: 700;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            animation: pulseCounter 0.5s ease;
+            font-family: 'Inter', sans-serif;
         }
-        
-        @keyframes pulseCounter {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.3); }
-            100% { transform: scale(1); }
-        }
-        
+
         .checklist-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 1px solid var(--light-gray);
         }
-        
+
+        body.dark-theme .checklist-header { border-bottom-color: var(--border-dark); }
+
         .checklist-title {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: color 0.3s;
         }
-        
-        .checklist-actions {
-            display: flex;
-            gap: 5px;
-        }
-        
+
+        body.dark-theme .checklist-title { color: var(--accent); }
+
+        .checklist-actions { display: flex; gap: 6px; }
+
         .checklist-btn {
-            background: #4a6491;
+            background: var(--primary);
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
+            padding: 6px 12px;
+            border-radius: var(--radius);
             cursor: pointer;
-            font-size: 12px;
-            transition: background 0.3s;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            font-family: 'Raleway', sans-serif;
         }
-        
-        .checklist-btn:hover {
-            background: #2c3e50;
-        }
-        
-        .checklist-btn.clear {
-            background: #e74c3c;
-        }
-        
-        .checklist-btn.clear:hover {
-            background: #c0392b;
-        }
-        
-        .checklist-btn.order {
-            background: #27ae60;
-            font-weight: bold;
-            animation: glow 2s infinite;
-        }
-        
-        .checklist-btn.order:hover {
-            background: #219653;
-            animation: none;
-        }
-        
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 5px rgba(39, 174, 96, 0.5); }
-            50% { box-shadow: 0 0 15px rgba(39, 174, 96, 0.8); }
-        }
-        
+
+        .checklist-btn:hover { background: var(--primary-light); }
+        .checklist-btn.clear { background: #6c757d; }
+        .checklist-btn.clear:hover { background: #555; }
+        .checklist-btn.order { background: var(--accent); color: var(--dark); font-weight: 700; }
+        .checklist-btn.order:hover { background: #c09e6e; }
+        body.dark-theme .checklist-btn.order { background: var(--accent-neon); color: var(--bg-dark); }
+
         .checklist-item {
             display: flex;
             align-items: center;
             gap: 10px;
-            padding: 10px;
-            border-bottom: 1px solid #f1f5f9;
-            transition: background 0.3s;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--light-gray);
+            transition: border-color 0.3s;
         }
-        
-        .checklist-item:hover {
-            background: #f8f9fa;
-        }
-        
-        .checklist-checkbox {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        
-        .checklist-label {
-            flex: 1;
-            font-size: 14px;
-            color: #333;
-        }
-        
+
+        body.dark-theme .checklist-item { border-bottom-color: var(--border-dark); }
+        .checklist-item:hover { background: var(--light); }
+        body.dark-theme .checklist-item:hover { background: var(--bg-dark); }
+
+        .checklist-label { flex: 1; font-size: 0.85rem; color: var(--dark); transition: color 0.3s; }
+        body.dark-theme .checklist-label { color: var(--text-secondary-dark); }
+
         .checklist-category {
-            background: #f1f5f9;
-            padding: 8px 12px;
-            margin: 10px 0 5px 0;
-            border-radius: 5px;
-            font-weight: bold;
-            color: #2c3e50;
-            font-size: 14px;
+            padding: 6px 10px;
+            margin: 8px 0 4px;
+            border-radius: var(--radius);
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: var(--light);
+            transition: background-color 0.3s, color 0.3s;
         }
-        
+
+        body.dark-theme .checklist-category { background: var(--bg-dark); color: var(--accent); }
+
+        .checklist-empty {
+            text-align: center;
+            color: var(--gray);
+            padding: 20px;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
         .checklist-summary {
-            margin-top: 15px;
+            margin-top: 12px;
             padding: 10px;
-            background: #e8f4fc;
-            border-radius: 8px;
-            font-size: 14px;
+            background: var(--light);
+            border-radius: var(--radius);
+            font-size: 0.85rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background-color 0.3s;
         }
-        
-        .checklist-empty {
-            text-align: center;
-            color: #95a5a6;
-            padding: 20px;
-            font-style: italic;
-        }
-        
-        .select-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: rgba(255,255,255,0.9);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
+
+        body.dark-theme .checklist-summary { background: var(--bg-dark); }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: var(--primary);
+            color: white;
+            padding: 14px 20px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            z-index: 9999;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            transition: all 0.3s ease;
-            z-index: 5;
-            opacity: 0;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+            animation: slideInRight 0.3s ease;
         }
-        
-        .variant-card:hover .select-btn {
-            opacity: 1;
+
+        .notification.remove { background: #6c757d; }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
         }
-        
-        .chair-item:hover .select-btn {
-            opacity: 1;
-        }
-        
-        .select-btn.selected {
-            background: #27ae60;
-            color: white;
-            opacity: 1;
-            animation: selectPulse 0.5s ease;
-        }
-        
-        .select-btn:hover {
-            transform: scale(1.1);
-            background: white;
-            color: #4a6491;
-        }
-        
-        .select-btn.selected:hover {
-            background: #219653;
-            color: white;
-        }
-        
-        @keyframes selectPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); }
-        }
-        
-        .select-btn.small {
-            width: 30px;
-            height: 30px;
-            font-size: 16px;
-            opacity: 1;
-        }
-        
-        .select-tooltip {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: #2c3e50;
-            color: white;
-            padding: 6px 10px;
-            border-radius: 6px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            z-index: 10;
-        }
-        
-        .select-tooltip::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            right: 15px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 5px solid #2c3e50;
-        }
-        
-        .select-btn:hover .select-tooltip {
-            opacity: 1;
-        }
-        
-        /* Модальное окно заявки */
+
+        /* Order modal */
         .order-modal {
             display: none;
             position: fixed;
@@ -830,647 +646,177 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(10, 15, 12, 0.85);
             z-index: 2002;
             justify-content: center;
             align-items: center;
-            animation: fadeIn 0.3s ease;
             padding: 20px;
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
         }
-        
-        .order-modal.active {
-            display: flex;
-        }
-        
+
+        .order-modal.active { display: flex; }
+
         .order-content {
             background: white;
-            border-radius: 15px;
-            padding: 30px;
+            border-radius: var(--radius);
+            padding: 35px;
             width: 100%;
-            max-width: 600px;
+            max-width: 520px;
             max-height: 90vh;
             overflow-y: auto;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border: 1px solid var(--light-gray);
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        
+
+        body.dark-theme .order-content { background: var(--bg-card-dark); border-color: var(--border-dark); }
+
         .order-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--light-gray);
         }
-        
+
+        body.dark-theme .order-header { border-bottom-color: var(--border-dark); }
+
         .order-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: color 0.3s;
         }
-        
+
+        body.dark-theme .order-title { color: var(--accent); }
+
         .order-close {
             background: none;
             border: none;
-            font-size: 30px;
-            color: #95a5a6;
+            font-size: 1.6rem;
+            color: var(--gray);
             cursor: pointer;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s;
+            transition: color 0.3s;
         }
-        
-        .order-close:hover {
-            background: #f1f5f9;
-            color: #2c3e50;
-        }
-        
+
+        .order-close:hover { color: var(--primary); }
+        body.dark-theme .order-close:hover { color: var(--accent-neon); }
+
         .order-preview {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 25px;
-            border-left: 4px solid #4a6491;
+            background: var(--light);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent);
+            transition: background-color 0.3s, border-color 0.3s;
         }
-        
+
+        body.dark-theme .order-preview { background: var(--bg-dark); border-left-color: var(--accent-neon); }
+
         .order-preview-title {
-            font-size: 16px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+            transition: color 0.3s;
         }
-        
-        .order-items {
-            max-height: 200px;
-            overflow-y: auto;
-            padding-right: 10px;
-        }
-        
-        .order-item {
-            padding: 8px 0;
-            border-bottom: 1px dashed #ddd;
-            font-size: 14px;
-        }
-        
-        .order-item:last-child {
-            border-bottom: none;
-        }
-        
-        .order-form {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        
-        .form-label {
-            font-size: 14px;
-            font-weight: 600;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .required::after {
-            content: "*";
-            color: #e74c3c;
-        }
-        
+
+        body.dark-theme .order-preview-title { color: var(--accent); }
+
+        .order-items { max-height: 150px; overflow-y: auto; padding-right: 6px; }
+        .order-item { padding: 6px 0; border-bottom: 1px dashed var(--light-gray); font-size: 0.85rem; color: var(--dark); transition: color 0.3s, border-color 0.3s; }
+        body.dark-theme .order-item { color: var(--text-secondary-dark); border-color: var(--border-dark); }
+        .order-item:last-child { border-bottom: none; }
+
+        .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+        .form-label { font-size: 0.8rem; font-weight: 600; color: var(--dark); text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.3s; }
+        body.dark-theme .form-label { color: var(--text-dark); }
+        .required::after { content: "*"; color: #e74c3c; }
+
         .form-input {
-            padding: 12px 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            transition: all 0.3s;
-        }
-        
-        .form-input:focus {
+            padding: 10px 14px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: var(--transition);
+            background: white;
             outline: none;
-            border-color: #4a6491;
-            box-shadow: 0 0 0 3px rgba(74, 100, 145, 0.1);
+            color: var(--dark);
         }
-        
-        .form-textarea {
-            min-height: 100px;
-            resize: vertical;
+
+        body.dark-theme .form-input {
+            background: var(--bg-dark);
+            border-color: var(--border-dark);
+            color: var(--text-dark);
         }
-        
-        .form-note {
-            font-size: 12px;
-            color: #95a5a6;
-            margin-top: -5px;
-        }
-        
-        .order-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .order-btn {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .order-btn.vk {
-            background: linear-gradient(135deg, #0077FF, #4A90E2);
-            color: white;
-        }
-        
-        .order-btn.vk:hover {
-            background: linear-gradient(135deg, #0066CC, #3A80D2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 119, 255, 0.3);
-        }
-        
-        .order-btn.copy {
-            background: #f1f5f9;
-            color: #2c3e50;
-            border: 2px solid #ddd;
-        }
-        
-        .order-btn.copy:hover {
-            background: #e8f4fc;
-            border-color: #4a6491;
-            transform: translateY(-2px);
-        }
-        
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 30px;
-            color: #27ae60;
-        }
-        
-        .success-message.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        /* Модальное окно с инструкцией */
-        .instruction-modal {
-            display: none;
+
+        .form-input:focus { border-color: var(--accent); }
+        body.dark-theme .form-input:focus { border-color: var(--accent-neon); }
+
+        .form-note { font-size: 0.75rem; color: var(--gray); }
+        .form-textarea { min-height: 90px; resize: vertical; }
+
+        .order-actions { display: flex; gap: 12px; margin-top: 6px; }
+        .order-actions .btn { flex: 1; padding: 12px 16px; font-size: 0.85rem; }
+
+        .success-message { display: none; text-align: center; padding: 30px 0 10px; color: var(--accent); }
+        body.dark-theme .success-message { color: var(--accent-neon); }
+        .success-message.active { display: block; }
+        .success-message h3 { margin-bottom: 10px; font-size: 1.3rem; }
+
+        /* Theme toggle */
+        .theme-toggle {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2004;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .instruction-modal.active {
-            display: flex;
-        }
-
-        .instruction-content {
-            background: white;
-            border-radius: 15px;
-            max-width: 500px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .instruction-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 25px;
-            border-bottom: 2px solid #f1f5f9;
-            background: linear-gradient(to right, #f8f9fa, white);
-            border-radius: 15px 15px 0 0;
-        }
-
-        .instruction-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .instruction-close {
-            background: none;
-            border: none;
-            font-size: 28px;
-            color: #95a5a6;
             cursor: pointer;
-            width: 35px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s;
+            z-index: 1000;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            transition: var(--transition);
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        .instruction-close:hover {
-            background: #f1f5f9;
-            color: #2c3e50;
-        }
+        .theme-toggle:hover { transform: translateY(-3px); box-shadow: 0 12px 24px rgba(0,0,0,0.3); background-color: var(--primary-light); }
+        .theme-toggle i { font-size: 1.3rem; }
+        body.dark-theme .theme-toggle { background-color: var(--accent); color: var(--bg-dark); }
 
-        .instruction-body {
-            padding: 25px;
-        }
-
-        .instruction-step {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .step-number {
-            width: 35px;
-            height: 35px;
-            background: #4a6491;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 18px;
-            flex-shrink: 0;
-        }
-
-        .step-text {
-            flex: 1;
-        }
-
-        .step-text strong {
-            color: #2c3e50;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .step-text p {
-            color: #666;
-            font-size: 14px;
-            margin: 0;
-        }
-
-        .instruction-preview {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin-top: 10px;
-            border: 2px solid #e9ecef;
-        }
-
-        .preview-title {
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
-
-        .preview-content {
-            background: white;
-            border-radius: 8px;
-            padding: 12px;
-            font-size: 13px;
-            line-height: 1.5;
-            max-height: 150px;
-            overflow-y: auto;
-            border: 1px solid #dee2e6;
-            white-space: pre-wrap;
-            font-family: monospace;
-        }
-
-        .instruction-actions {
-            display: flex;
-            gap: 12px;
-            padding: 20px 25px;
-            border-top: 2px solid #f1f5f9;
-        }
-
-        .instruction-btn {
-            flex: 1;
-            padding: 14px;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .instruction-btn.primary {
-            background: linear-gradient(135deg, #0077FF, #4A90E2);
-            color: white;
-        }
-
-        .instruction-btn.primary:hover {
-            background: linear-gradient(135deg, #0066CC, #3A80D2);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 119, 255, 0.3);
-        }
-
-        .instruction-btn.secondary {
-            background: #f1f5f9;
-            color: #2c3e50;
-            border: 2px solid #ddd;
-        }
-
-        .instruction-btn.secondary:hover {
-            background: #e8f4fc;
-            border-color: #4a6491;
-            transform: translateY(-2px);
-        }
-
-        /* Уведомление */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #27ae60;
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            z-index: 9999;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: slideInRight 0.3s ease, fadeOut 0.3s 2.7s ease;
-            max-width: 300px;
-        }
-        
-        .notification.remove {
-            background: #e74c3c;
-        }
-        
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100%);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        
-        /* Предупреждение */
-        .warning-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.7);
-            z-index: 2003;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .warning-modal.active {
-            display: flex;
-        }
-        
-        .warning-content {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            max-width: 400px;
-            text-align: center;
-            animation: slideUp 0.3s ease;
-        }
-        
-        .warning-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-            color: #f1c40f;
-        }
-        
-        .warning-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        
-        .warning-text {
-            color: #666;
-            margin-bottom: 20px;
-        }
-        
-        .warning-actions {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
-        
-        .warning-btn {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s;
-        }
-        
-        .warning-btn.primary {
-            background: #4a6491;
-            color: white;
-        }
-        
-        .warning-btn.secondary {
-            background: #f1f5f9;
-            color: #2c3e50;
-        }
-        
-        .warning-btn:hover {
-            transform: translateY(-2px);
-        }
-        
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-        
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px;
-            background: #2c3e50;
-            color: white;
-            margin-top: 40px;
-        }
-        
         @media (max-width: 768px) {
-            .variant-grid {
-                grid-template-columns: 1fr;
-            }
-            header h1 {
-                font-size: 2rem;
-            }
-            .variant-card img, .carousel {
-                height: 200px;
-            }
-            .chairs-grid {
-                flex-direction: column;
-                align-items: center;
-            }
-            .chair-item {
-                width: 100%;
-                max-width: 250px;
-            }
-            .chair-item img {
-                height: 160px;
-            }
-            .section:nth-child(3) .carousel {
-                height: 220px;
-            }
-            .kitchen-photo {
-                height: 200px;
-            }
-            
-            .vk-float {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 16px;
-            }
-            
-            .vk-text {
-                font-size: 14px;
-            }
-            
-            .vk-icon {
-                font-size: 20px;
-            }
-            
-            .quick-nav {
-                right: 10px;
-                padding: 10px 5px;
-                gap: 8px;
-            }
-            
-            .quick-nav a {
-                width: 40px;
-                height: 40px;
-                font-size: 12px;
-            }
-            
-            .checklist-container {
-                width: calc(100% - 40px);
-                left: 20px;
-                right: 20px;
-                max-height: 350px;
-            }
-            
-            .checklist-toggle {
-                bottom: 90px;
-                left: 20px;
-            }
-            
-            .order-content {
-                padding: 20px;
-                margin: 10px;
-            }
-            
-            .order-actions {
-                flex-direction: column;
-            }
-
-            .instruction-content {
-                margin: 10px;
-            }
-            
-            .instruction-actions {
-                flex-direction: column;
-            }
+            .variant-grid { grid-template-columns: 1fr; }
+            header h1 { font-size: 1.8rem; }
+            .section { padding: 24px; }
+            .carousel { height: 220px; }
+            .chairs-grid { justify-content: center; }
+            .chair-item { width: 160px; }
+            .chair-item img { height: 130px; }
+            .modal-nav { width: 44px; height: 44px; font-size: 1.4rem; }
+            .modal-prev { left: 12px; }
+            .modal-next { right: 12px; }
+            .modal-close { top: 14px; right: 18px; font-size: 2rem; }
+            .checklist-container { width: calc(100% - 40px); left: 20px; }
+            .checklist-toggle { left: 20px; }
+            .order-actions { flex-direction: column; }
         }
-        
+
         @media (max-width: 480px) {
-            .quick-nav {
-                display: none;
-            }
-            
-            .checklist-container {
-                width: calc(100% - 30px);
-                left: 15px;
-                right: 15px;
-            }
-            
-            .checklist-toggle {
-                left: 15px;
-            }
+            .section { padding: 18px; }
+            .carousel { height: 200px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Прогресс-бар -->
-    <div class="scroll-progress">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <!-- Быстрая навигация -->
-    <nav class="quick-nav" id="quickNav">
-        <a href="#wardrobe" data-title="Шкаф+тумба">🗄️</a>
-        <a href="#sofa" data-title="Диван/Кровать">🛋️</a>
-        <a href="#dining" data-title="Обеденная">🍽️</a>
-        <a href="#hallway" data-title="Прихожая">🚪</a>
-        <a href="#kitchen" data-title="Кухня">🍳</a>
-        <a href="#top" data-title="Наверх">⬆️</a>
-    </nav>
+    <!-- Тема -->
+    <div class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></div>
 
     <!-- Чек-лист -->
     <button class="checklist-toggle" id="checklistToggle" title="Список выбора">📋</button>
@@ -1478,31 +824,25 @@
         <div class="checklist-header">
             <div class="checklist-title">Мой выбор</div>
             <div class="checklist-actions">
-                <button class="checklist-btn order" id="orderBtn">📝 Заявка</button>
+                <button class="checklist-btn order" id="orderBtn">Заявка</button>
                 <button class="checklist-btn clear" id="clearChecklist">Очистить</button>
             </div>
         </div>
         <div id="checklistItems">
             <div class="checklist-empty">Выберите понравившиеся варианты</div>
         </div>
-        <div class="checklist-summary" id="checklistSummary">
-            <span>Выбрано: <strong id="selectedCount">0</strong> элементов</span>
-            <button class="checklist-btn order small" id="orderBtnSmall">📝</button>
+        <div class="checklist-summary" id="checklistSummary" style="display:none;">
+            <span>Выбрано: <strong id="selectedCount">0</strong></span>
+            <button class="checklist-btn order" id="orderBtnSmall">Заявка</button>
         </div>
     </div>
 
-    <!-- VK кнопка -->
-    <a href="https://vk.com/im/convo/-96810994?entrypoint=community_page&tab=all" class="vk-float" target="_blank" title="Написать ВКонтакте">
-        <span class="vk-icon">💬</span>
-        <span class="vk-text">Написать ВКонтакте</span>
-    </a>
-
-    <!-- Модальное окно для фото -->
+    <!-- Модальное окно фото -->
     <div class="modal" id="imageModal">
-        <button class="modal-close" id="closeModal">×</button>
-        <button class="modal-nav modal-prev" id="prevModal">‹</button>
-        <button class="modal-nav modal-next" id="nextModal">›</button>
-        <div class="modal-content">
+        <button class="modal-close" id="closeModal">&times;</button>
+        <button class="modal-nav modal-prev" id="prevModal"><i class="fas fa-chevron-left"></i></button>
+        <button class="modal-nav modal-next" id="nextModal"><i class="fas fa-chevron-right"></i></button>
+        <div class="modal-content-wrapper">
             <img class="modal-img" id="modalImage" src="" alt="">
         </div>
     </div>
@@ -1511,149 +851,77 @@
     <div class="order-modal" id="orderModal">
         <div class="order-content">
             <div class="order-header">
-                <div class="order-title">📝 Оформление заявки</div>
-                <button class="order-close" id="closeOrderModal">×</button>
+                <div class="order-title">Оставить заявку</div>
+                <button class="order-close" id="closeOrderModal">&times;</button>
             </div>
-            
+
             <div class="order-preview">
-                <div class="order-preview-title">📋 Выбранные варианты:</div>
+                <div class="order-preview-title">Выбранные варианты:</div>
                 <div class="order-items" id="orderPreview"></div>
             </div>
-            
+
             <div class="order-form" id="orderForm">
                 <div class="form-group">
-                    <label class="form-label required">👤 Ваше имя</label>
+                    <label class="form-label required">Ваше имя</label>
                     <input type="text" class="form-input" id="orderName" placeholder="Иван Иванов" required>
                 </div>
-                
+
                 <div class="form-group">
-                    <label class="form-label required">📱 Ваш телефон</label>
-                    <input type="tel" class="form-input" id="orderPhone" placeholder="+7 999 123-45-67" required>
+                    <label class="form-label required">Номер телефона</label>
+                    <input type="tel" class="form-input" id="orderPhone" placeholder="+7 (999) 999-99-99" required>
                     <div class="form-note">Мы перезвоним для уточнения деталей</div>
                 </div>
-                
+
                 <div class="form-group">
-                    <label class="form-label">📧 Email (необязательно)</label>
+                    <label class="form-label">Email (необязательно)</label>
                     <input type="email" class="form-input" id="orderEmail" placeholder="email@example.com">
                 </div>
-                
+
                 <div class="form-group">
-                    <label class="form-label">💬 Комментарий к заявке</label>
-                    <textarea class="form-input form-textarea" id="orderComment" placeholder="Ваши пожелания, вопросы или особенности..."></textarea>
+                    <label class="form-label">Комментарий</label>
+                    <textarea class="form-input form-textarea" id="orderComment" placeholder="Ваши пожелания, вопросы..."></textarea>
                 </div>
-                
+
                 <div class="order-actions">
-                    <button class="order-btn vk" id="sendToVK">
-                        <span>📤 Отправить заявку ВКонтакте</span>
-                    </button>
-                    <button class="order-btn copy" id="copyOrder">
-                        <span>📋 Копировать текст заявки</span>
-                    </button>
+                    <button class="btn" id="sendToVK" style="flex:1;">Отправить в ВК</button>
+                    <button class="btn" id="copyOrder" style="flex:1;">Копировать текст</button>
                 </div>
             </div>
-            
+
             <div class="success-message" id="successMessage">
-                <h3 style="margin-bottom: 15px; font-size: 24px;">✅ Заявка готова!</h3>
-                <p style="margin-bottom: 15px;">Текст заявки скопирован в буфер обмена.</p>
-                <p style="margin-bottom: 20px;">Следуйте инструкции для отправки в ВКонтакте</p>
+                <h3>✅ Заявка готова!</h3>
+                <p>Текст скопирован. Следуйте инструкции для отправки в ВК.</p>
             </div>
         </div>
     </div>
 
-    <!-- Модальное окно с инструкцией -->
-    <div class="instruction-modal" id="instructionModal">
-        <div class="instruction-content">
-            <div class="instruction-header">
-                <div class="instruction-title">📋 Инструкция перед отправкой</div>
-                <button class="instruction-close" id="closeInstructionModal">×</button>
-            </div>
-            
-            <div class="instruction-body">
-                <div class="instruction-step">
-                    <div class="step-number">1</div>
-                    <div class="step-text">
-                        <strong>Текст заявки скопирован</strong>
-                        <p>Вся информация о выбранных вариантах и ваших контактах уже в буфере обмена.</p>
-                    </div>
-                </div>
-                
-                <div class="instruction-step">
-                    <div class="step-number">2</div>
-                    <div class="step-text">
-                        <strong>Нажмите «Перейти в ВК»</strong>
-                        <p>Откроется диалог с нашим сообществом ВКонтакте.</p>
-                    </div>
-                </div>
-                
-                <div class="instruction-step">
-                    <div class="step-number">3</div>
-                    <div class="step-text">
-                        <strong>Вставьте текст заявки</strong>
-                        <p>В поле ввода сообщения нажмите правой кнопкой мыши → «Вставить» или используйте Ctrl+V (Cmd+V на Mac).</p>
-                    </div>
-                </div>
-                
-                <div class="instruction-preview">
-                    <div class="preview-title">📝 Текст заявки (скопирован):</div>
-                    <div class="preview-content" id="instructionPreviewText">Загрузка...</div>
-                </div>
-            </div>
-            
-            <div class="instruction-actions">
-                <button class="instruction-btn secondary" id="copyAgainBtn">📋 Копировать ещё раз</button>
-                <button class="instruction-btn primary" id="goToVKBtn">🚀 Перейти в ВК и вставить</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Предупреждение -->
-    <div class="warning-modal" id="warningModal">
-        <div class="warning-content">
-            <div class="warning-icon">⚠️</div>
-            <div class="warning-title">Список выбора пуст!</div>
-            <div class="warning-text">
-                Выберите хотя бы один вариант мебели, прежде чем оформлять заявку.
-                Используйте кнопки <strong style="color: #4a6491;">"+"</strong> на карточках для добавления в список.
-            </div>
-            <div class="warning-actions">
-                <button class="warning-btn secondary" id="closeWarning">Понятно</button>
-                <button class="warning-btn primary" id="showChecklist">Открыть список</button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Header -->
     <header id="top">
-        <h1>Пакет стандарт для Студии</h1>
+        <h1>Пакет Стандарт для Студии</h1>
+        <div class="logo-divider"></div>
+        <p class="subtitle">Мебель и Стиль</p>
         <p>Полная комплектация мебелью. Три варианта на выбор в каждом модуле.</p>
-        <p style="margin-top: 10px; font-size: 16px; opacity: 0.9;">
-            <strong>Используйте чек-лист слева</strong> для выбора и кнопку <strong>"Заявка"</strong> для оформления
-        </p>
+        <p class="hint">Используйте кнопку <strong>📋</strong> слева внизу для выбора и оформления заявки</p>
     </header>
 
-    <div class="container">
+    <div class="container" style="padding-top: 30px; padding-bottom: 30px;">
 
         <!-- Шкаф + тумба -->
         <section class="section" id="wardrobe">
-            <h2>Шкаф + тумба</h2>
+            <h2>🗄️ Шкаф + тумба</h2>
             <p>Выберите один из трёх вариантов комплектации:</p>
             <div class="variant-grid">
                 <!-- Вариант 1 -->
-                <div class="variant-card" data-category="шкаф-тумба" data-id="wardrobe1" data-name="Шкаф+тумба Вариант 1 - Кашемир">
-                    <button class="select-btn" data-item="wardrobe1">➕</button>
+                <div class="variant-card" data-category="шкаф-тумба" data-id="wardrobe1" data-name="Шкаф+тумба Вариант 1 — Кашемир">
+                    <button class="select-btn" data-item="wardrobe1">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/спальня/11.jpg" alt="Шкаф+тумба Вариант 1 — фото 1" class="zoomable" data-description="Шкаф+тумба Вариант 1 — фото 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/спальня/12.jpg" alt="Шкаф+тумба Вариант 1 — фото 2" class="zoomable" data-description="Шкаф+тумба Вариант 1 — фото 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/спальня/13.jpg" alt="Шкаф+тумба Вариант 1 — фото 3" class="zoomable" data-description="Шкаф+тумба Вариант 1 — фото 3">
-                            </div>
+                            <div class="carousel-item active"><img src="images/спальня/11.jpg" alt="Шкаф+тумба Вариант 1 — фото 1" class="zoomable" data-description="Шкаф+тумба Вариант 1 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/спальня/12.jpg" alt="Шкаф+тумба Вариант 1 — фото 2" class="zoomable" data-description="Шкаф+тумба Вариант 1 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/спальня/13.jpg" alt="Шкаф+тумба Вариант 1 — фото 3" class="zoomable" data-description="Шкаф+тумба Вариант 1 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 1</h3>
@@ -1666,50 +934,38 @@
                 </div>
 
                 <!-- Вариант 2 -->
-                <div class="variant-card" data-category="шкаф-тумба" data-id="wardrobe2" data-name="Шкаф+тумба Вариант 2 - Винтерберг/Темно-серый">
-                    <button class="select-btn" data-item="wardrobe2">➕</button>
+                <div class="variant-card" data-category="шкаф-тумба" data-id="wardrobe2" data-name="Шкаф+тумба Вариант 2 — Винтерберг/Тёмно-серый">
+                    <button class="select-btn" data-item="wardrobe2">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/спальня/21.jpg" alt="Шкаф+тумба Вариант 2 — фото 1" class="zoomable" data-description="Шкаф+тумба Вариант 2 — фото 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/спальня/22.jpg" alt="Шкаф+тумба Вариант 2 — фото 2" class="zoomable" data-description="Шкаф+тумба Вариант 2 — фото 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/спальня/23.jpg" alt="Шкаф+тумба Вариант 2 — фото 3" class="zoomable" data-description="Шкаф+тумба Вариант 2 — фото 3">
-                            </div>
+                            <div class="carousel-item active"><img src="images/спальня/21.jpg" alt="Шкаф+тумба Вариант 2 — фото 1" class="zoomable" data-description="Шкаф+тумба Вариант 2 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/спальня/22.jpg" alt="Шкаф+тумба Вариант 2 — фото 2" class="zoomable" data-description="Шкаф+тумба Вариант 2 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/спальня/23.jpg" alt="Шкаф+тумба Вариант 2 — фото 3" class="zoomable" data-description="Шкаф+тумба Вариант 2 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 2</h3>
                         <ul>
                             <li><strong>Шкаф Ш×В×Г:</strong> 1300 × 2300 × 570 мм</li>
                             <li><strong>Тумба Ш×В×Г:</strong> 900 × 1000 × 520 мм</li>
-                            <li><strong>Цвет:</strong> Винтерберг/Темно-серый</li>
+                            <li><strong>Цвет:</strong> Винтерберг/Тёмно-серый</li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Вариант 3 -->
-                <div class="variant-card" data-category="шкаф-тумба" data-id="wardrobe3" data-name="Шкаф+тумба Вариант 3 - Дуб крафт золотой">
-                    <button class="select-btn" data-item="wardrobe3">➕</button>
+                <div class="variant-card" data-category="шкаф-тумба" data-id="wardrobe3" data-name="Шкаф+тумба Вариант 3 — Дуб крафт золотой">
+                    <button class="select-btn" data-item="wardrobe3">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/спальня/31.jpg" alt="Шкаф+тумба Вариант 3 — фото 1" class="zoomable" data-description="Шкаф+тумба Вариант 3 — фото 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/спальня/32.jpg" alt="Шкаф+тумба Вариант 3 — фото 2" class="zoomable" data-description="Шкаф+тумба Вариант 3 — фото 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/спальня/33.jpg" alt="Шкаф+тумба Вариант 3 — фото 3" class="zoomable" data-description="Шкаф+тумба Вариант 3 — фото 3">
-                            </div>
+                            <div class="carousel-item active"><img src="images/спальня/31.jpg" alt="Шкаф+тумба Вариант 3 — фото 1" class="zoomable" data-description="Шкаф+тумба Вариант 3 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/спальня/32.jpg" alt="Шкаф+тумба Вариант 3 — фото 2" class="zoomable" data-description="Шкаф+тумба Вариант 3 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/спальня/33.jpg" alt="Шкаф+тумба Вариант 3 — фото 3" class="zoomable" data-description="Шкаф+тумба Вариант 3 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 3</h3>
@@ -1725,31 +981,21 @@
 
         <!-- Диван -->
         <section class="section" id="sofa">
-            <h2>Диван / Мягкая кровать с матрасом</h2>
+            <h2>🛋️ Диван / Мягкая кровать с матрасом</h2>
             <div class="variant-grid">
-                <!-- Вариант 1 - ЗАМЕНЕНО НА 5 ФОТО -->
-                <div class="variant-card" data-category="диван-кровать" data-id="sofa1" data-name="Диван Вариант 1 - 2240×1100×710 мм">
-                    <button class="select-btn" data-item="sofa1">➕</button>
+                <!-- Вариант 1 -->
+                <div class="variant-card" data-category="диван-кровать" data-id="sofa1" data-name="Диван Вариант 1 — 2240×1100×710 мм">
+                    <button class="select-btn" data-item="sofa1">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/диваны/100.jpg" alt="Диван Вариант 1 — фото 1" class="zoomable" data-description="Диван Вариант 1 — фото 1: Размеры 2240×1100×710 мм">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/101.jpg" alt="Диван Вариант 1 — фото 2" class="zoomable" data-description="Диван Вариант 1 — фото 2: Спальное место 1460×1940 мм">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/103.jpg" alt="Диван Вариант 1 — фото 3" class="zoomable" data-description="Диван Вариант 1 — фото 3: Вид сбоку">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/104.jpg" alt="Диван Вариант 1 — фото 4" class="zoomable" data-description="Диван Вариант 1 — фото 4: Детали обивки">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/107.jpg" alt="Диван Вариант 1 — фото 5" class="zoomable" data-description="Диван Вариант 1 — фото 5: Ящик для белья">
-                            </div>
+                            <div class="carousel-item active"><img src="images/диваны/100.jpg" alt="Диван Вариант 1 — фото 1" class="zoomable" data-description="Диван Вариант 1 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/диваны/101.jpg" alt="Диван Вариант 1 — фото 2" class="zoomable" data-description="Диван Вариант 1 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/диваны/103.jpg" alt="Диван Вариант 1 — фото 3" class="zoomable" data-description="Диван Вариант 1 — фото 3"></div>
+                            <div class="carousel-item"><img src="images/диваны/104.jpg" alt="Диван Вариант 1 — фото 4" class="zoomable" data-description="Диван Вариант 1 — фото 4"></div>
+                            <div class="carousel-item"><img src="images/диваны/107.jpg" alt="Диван Вариант 1 — фото 5" class="zoomable" data-description="Диван Вариант 1 — фото 5"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 1</h3>
@@ -1764,22 +1010,16 @@
                 </div>
 
                 <!-- Вариант 2 -->
-                <div class="variant-card" data-category="диван-кровать" data-id="sofa2" data-name="Диван Вариант 2 - 2000×1050×920 мм">
-                    <button class="select-btn" data-item="sofa2">➕</button>
+                <div class="variant-card" data-category="диван-кровать" data-id="sofa2" data-name="Диван Вариант 2 — 2000×1050×920 мм">
+                    <button class="select-btn" data-item="sofa2">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/диваны/05vtzw7qe952sksj5gn3at3vx0wkzyur.jpg" alt="Диван Вариант 2 — фото 1" class="zoomable" data-description="Диван Вариант 2 — фото 1: Размеры 2000×1050×920 мм">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/13t1qb3ifv4dhazhigh6epdouujl5kot.jpg" alt="Диван Вариант 2 — фото 2" class="zoomable" data-description="Диван Вариант 2 — фото 2: Спальное место 1500×1920 мм">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/6cwiowjeet0ccmaq59khlg2xo46m6o68.jpg" alt="Диван Вариант 2 — фото 3" class="zoomable" data-description="Диван Вариант 2 — фото 3: Высота сиденья 450 мм">
-                            </div>
+                            <div class="carousel-item active"><img src="images/диваны/05vtzw7qe952sksj5gn3at3vx0wkzyur.jpg" alt="Диван Вариант 2 — фото 1" class="zoomable" data-description="Диван Вариант 2 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/диваны/13t1qb3ifv4dhazhigh6epdouujl5kot.jpg" alt="Диван Вариант 2 — фото 2" class="zoomable" data-description="Диван Вариант 2 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/диваны/6cwiowjeet0ccmaq59khlg2xo46m6o68.jpg" alt="Диван Вариант 2 — фото 3" class="zoomable" data-description="Диван Вариант 2 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 2</h3>
@@ -1794,22 +1034,16 @@
                 </div>
 
                 <!-- Вариант 3 -->
-                <div class="variant-card" data-category="диван-кровать" data-id="sofa3" data-name="Кровать Вариант 3 - 1730×1135×2200 мм">
-                    <button class="select-btn" data-item="sofa3">➕</button>
+                <div class="variant-card" data-category="диван-кровать" data-id="sofa3" data-name="Кровать Вариант 3 — 1730×1135×2200 мм">
+                    <button class="select-btn" data-item="sofa3">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/диваны/2.jpg" alt="Диван Вариант 3 — фото 1" class="zoomable" data-description="Кровать Вариант 3 — фото 1: Размеры 1730×1135×2200 мм">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/3.jpg" alt="Диван Вариант 3 — фото 2" class="zoomable" data-description="Кровать Вариант 3 — фото 2: Мягкая кровать">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/диваны/4.jpg" alt="Диван Вариант 3 — фото 3" class="zoomable" data-description="Кровать Вариант 3 — фото 3: С ортопедическим матрасом">
-                            </div>
+                            <div class="carousel-item active"><img src="images/диваны/2.jpg" alt="Кровать Вариант 3 — фото 1" class="zoomable" data-description="Кровать Вариант 3 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/диваны/3.jpg" alt="Кровать Вариант 3 — фото 2" class="zoomable" data-description="Кровать Вариант 3 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/диваны/4.jpg" alt="Кровать Вариант 3 — фото 3" class="zoomable" data-description="Кровать Вариант 3 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 3</h3>
@@ -1825,99 +1059,65 @@
 
         <!-- Обеденная группа -->
         <section class="section" id="dining">
-            <h2>Обеденная группа</h2>
-            
+            <h2>🍽️ Обеденная группа</h2>
             <div class="variant-grid">
-                <!-- Вариант 1 -->
-                <div class="variant-card" data-category="обеденная" data-id="table1" data-name="Стол Вариант 1 - Раскладной">
-                    <button class="select-btn" data-item="table1">➕</button>
-                    <div class="carousel">
+                <div class="variant-card" data-category="обеденная" data-id="table1" data-name="Стол Вариант 1 — Раскладной">
+                    <button class="select-btn" data-item="table1">+</button>
+                    <div class="carousel" style="height:280px;">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/обеденные/borg_taksonija_medov_+_052_mazerati-19-500x500.jpg" alt="Стол Вариант 1 — фото 1" class="zoomable" data-description="Стол Вариант 1 — фото 1: Раскладной обеденный стол">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/обеденные/brooklyn_s-023_black_tacson_med_(1)-500x500.jpg" alt="Стол Вариант 1 — фото 2" class="zoomable" data-description="Стол Вариант 1 — фото 2: Раскладной стол (вид сверху)">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/обеденные/brooklyn_s-023_black_tacson_med_(2)-500x500.jpg" alt="Стол Вариант 1 — фото 3" class="zoomable" data-description="Стол Вариант 1 — фото 3: Раскладной стол в разложенном виде">
-                            </div>
+                            <div class="carousel-item active"><img src="images/обеденные/borg_taksonija_medov_+_052_mazerati-19-500x500.jpg" alt="Стол Вариант 1" class="zoomable" data-description="Стол Вариант 1 — Раскладной"></div>
+                            <div class="carousel-item"><img src="images/обеденные/brooklyn_s-023_black_tacson_med_(1)-500x500.jpg" alt="Стол Вариант 1 — фото 2" class="zoomable" data-description="Стол Вариант 1 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/обеденные/brooklyn_s-023_black_tacson_med_(2)-500x500.jpg" alt="Стол Вариант 1 — фото 3" class="zoomable" data-description="Стол Вариант 1 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="variant-content">
-                        <h3>Вариант 1</h3>
-                        <p>Раскладной обеденный стол</p>
-                    </div>
+                    <div class="variant-content"><h3>Вариант 1</h3><p>Раскладной обеденный стол</p></div>
                 </div>
-
-                <!-- Вариант 2 -->
-                <div class="variant-card" data-category="обеденная" data-id="table2" data-name="Стол Вариант 2 - Круглый">
-                    <button class="select-btn" data-item="table2">➕</button>
-                    <div class="carousel">
+                <div class="variant-card" data-category="обеденная" data-id="table2" data-name="Стол Вариант 2 — Круглый">
+                    <button class="select-btn" data-item="table2">+</button>
+                    <div class="carousel" style="height:280px;">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/обеденные/2222.jpg" alt="Стол Вариант 2 — фото 1" class="zoomable" data-description="Стол Вариант 2 — фото 1: Круглый обеденный стол">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/обеденные/231.jpg" alt="Стол Вариант 2 — фото 2" class="zoomable" data-description="Стол Вариант 2 — фото 2: Круглый стол в интерьере">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/обеденные/с1тол.jpg" alt="Стол Вариант 2 — фото 3" class="zoomable" data-description="Стол Вариант 2 — фото 3: Круглый стол с стульями">
-                            </div>
+                            <div class="carousel-item active"><img src="images/обеденные/2222.jpg" alt="Стол Вариант 2" class="zoomable" data-description="Стол Вариант 2 — Круглый"></div>
+                            <div class="carousel-item"><img src="images/обеденные/231.jpg" alt="Стол Вариант 2 — фото 2" class="zoomable" data-description="Стол Вариант 2 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/обеденные/с1тол.jpg" alt="Стол Вариант 2 — фото 3" class="zoomable" data-description="Стол Вариант 2 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="variant-content">
-                        <h3>Вариант 2</h3>
-                        <p>Круглый стол обеденный</p>
-                    </div>
+                    <div class="variant-content"><h3>Вариант 2</h3><p>Круглый стол обеденный</p></div>
                 </div>
-
-                <!-- Вариант 3 -->
-                <div class="variant-card" data-category="обеденная" data-id="table3" data-name="Стол Вариант 3 - Нераскладной">
-                    <button class="select-btn" data-item="table3">➕</button>
-                    <div class="carousel">
+                <div class="variant-card" data-category="обеденная" data-id="table3" data-name="Стол Вариант 3 — Нераскладной">
+                    <button class="select-btn" data-item="table3">+</button>
+                    <div class="carousel" style="height:280px;">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/обеденные/1 (3).jpg" alt="Стол Вариант 3 — фото 1" class="zoomable" data-description="Стол Вариант 3 — фото 1: Нераскладной обеденный стол">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/обеденные/1 (1).jpg" alt="Стол Вариант 3 — фото 2" class="zoomable" data-description="Стол Вариант 3 — фото 2: Стол прямоугольной формы">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/обеденные/1 (2).jpg" alt="Стол Вариант 3 — фото 3" class="zoomable" data-description="Стол Вариант 3 — фото 3: Стол в современном интерьере">
-                            </div>
+                            <div class="carousel-item active"><img src="images/обеденные/1 (3).jpg" alt="Стол Вариант 3" class="zoomable" data-description="Стол Вариант 3 — Нераскладной"></div>
+                            <div class="carousel-item"><img src="images/обеденные/1 (1).jpg" alt="Стол Вариант 3 — фото 2" class="zoomable" data-description="Стол Вариант 3 — фото 2"></div>
+                            <div class="carousel-item"><img src="images/обеденные/1 (2).jpg" alt="Стол Вариант 3 — фото 3" class="zoomable" data-description="Стол Вариант 3 — фото 3"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
-                    <div class="variant-content">
-                        <h3>Вариант 3</h3>
-                        <p>Нераскладной стол обеденный</p>
-                    </div>
+                    <div class="variant-content"><h3>Вариант 3</h3><p>Нераскладной стол обеденный</p></div>
                 </div>
             </div>
-            
-            <!-- Стулья -->
+
             <div class="chairs-container">
                 <h3 class="chairs-title">Модель стула на выбор</h3>
                 <div class="chairs-grid">
                     <div class="chair-item" data-category="стулья" data-id="chair1" data-name="Стул Модель 1">
-                        <button class="select-btn" data-item="chair1">➕</button>
-                        <img src="images/обеденные/052_black_velluto_25(1)-500x500.jpg" alt="Стул 1" class="zoomable" data-description="Стул Модель 1: Черный велюр, классический дизайн">
+                        <button class="select-btn" data-item="chair1">+</button>
+                        <img src="images/обеденные/052_black_velluto_25(1)-500x500.jpg" alt="Стул 1" class="zoomable" data-description="Стул Модель 1">
                         <p class="chair-name">Модель 1</p>
                     </div>
                     <div class="chair-item" data-category="стулья" data-id="chair2" data-name="Стул Модель 2">
-                        <button class="select-btn" data-item="chair2">➕</button>
-                        <img src="images/обеденные/032_black_velluto_10_(1)-500x500.jpg" alt="Стул 2" class="zoomable" data-description="Стул Модель 2: Черный велюр, современный дизайн">
+                        <button class="select-btn" data-item="chair2">+</button>
+                        <img src="images/обеденные/032_black_velluto_10_(1)-500x500.jpg" alt="Стул 2" class="zoomable" data-description="Стул Модель 2">
                         <p class="chair-name">Модель 2</p>
                     </div>
                     <div class="chair-item" data-category="стулья" data-id="chair3" data-name="Стул Модель 3">
-                        <button class="select-btn" data-item="chair3">➕</button>
-                        <img src="images/обеденные/073_black_velluto-18_(01)-500x500.jpg" alt="Стул 3" class="zoomable" data-description="Стул Модель 3: Черный велюр, эргономичный дизайн">
+                        <button class="select-btn" data-item="chair3">+</button>
+                        <img src="images/обеденные/073_black_velluto-18_(01)-500x500.jpg" alt="Стул 3" class="zoomable" data-description="Стул Модель 3">
                         <p class="chair-name">Модель 3</p>
                     </div>
                 </div>
@@ -1930,22 +1130,17 @@
 
         <!-- Прихожая -->
         <section class="section" id="hallway">
-            <h2>Прихожая</h2>
+            <h2>🚪 Прихожая</h2>
             <div class="variant-grid">
-                <!-- Вариант 1 -->
-                <div class="variant-card" data-category="прихожая" data-id="hall1" data-name="Прихожая Вариант 1 - Небольшой комплект">
-                    <button class="select-btn" data-item="hall1">➕</button>
+                <div class="variant-card" data-category="прихожая" data-id="hall1" data-name="Прихожая Вариант 1 — Небольшой комплект">
+                    <button class="select-btn" data-item="hall1">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/прихожая/49231_prikhozhaya-4-olga-milk.jpg" alt="Прихожая Вариант 1 - фото 1" class="zoomable" data-description="Прихожая Вариант 1 — фото 1: Небольшой комплект прихожей со шкафом">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/прихожая/52756_olga-loft-prikhozhaya-4-.jpg" alt="Прихожая Вариант 1 - фото 2" class="zoomable" data-description="Прихожая Вариант 1 — фото 2: Небольшой комплект прихожей с вешалкой">
-                            </div>
+                            <div class="carousel-item active"><img src="images/прихожая/49231_prikhozhaya-4-olga-milk.jpg" alt="Прихожая Вариант 1 — фото 1" class="zoomable" data-description="Прихожая Вариант 1 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/прихожая/52756_olga-loft-prikhozhaya-4-.jpg" alt="Прихожая Вариант 1 — фото 2" class="zoomable" data-description="Прихожая Вариант 1 — фото 2"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 1</h3>
@@ -1953,42 +1148,30 @@
                         <p><strong>Размеры (Ш×В×Г):</strong> 1100×2000×350 мм</p>
                     </div>
                 </div>
-
-                <!-- Вариант 2 -->
-                <div class="variant-card" data-category="прихожая" data-id="hall2" data-name="Прихожая Вариант 2 - Вешалка + зеркало">
-                    <button class="select-btn" data-item="hall2">➕</button>
+                <div class="variant-card" data-category="прихожая" data-id="hall2" data-name="Прихожая Вариант 2 — Вешалка + зеркало">
+                    <button class="select-btn" data-item="hall2">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/прихожая/v2_46942_granzh-1-prikhozhaya-veshalka.jpg" alt="Прихожая Вариант 2 - вешалка" class="zoomable" data-description="Прихожая Вариант 2 — вешалка: Вешалка с тумбой в стиле лофт">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/прихожая/зеркало.jpg" alt="Прихожая Вариант 2 - зеркало" class="zoomable" data-description="Прихожая Вариант 2 — зеркало: Большое зеркало в деревянной раме">
-                            </div>
+                            <div class="carousel-item active"><img src="images/прихожая/v2_46942_granzh-1-prikhozhaya-veshalka.jpg" alt="Прихожая Вариант 2 — вешалка" class="zoomable" data-description="Прихожая Вариант 2 — вешалка"></div>
+                            <div class="carousel-item"><img src="images/прихожая/зеркало.jpg" alt="Прихожая Вариант 2 — зеркало" class="zoomable" data-description="Прихожая Вариант 2 — зеркало"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 2</h3>
                         <p>Комплект прихожей: вешалка с тумбой + зеркало</p>
                     </div>
                 </div>
-
-                <!-- Вариант 3 -->
-                <div class="variant-card" data-category="прихожая" data-id="hall3" data-name="Прихожая Вариант 3 - Комплект с ящиками">
-                    <button class="select-btn" data-item="hall3">➕</button>
+                <div class="variant-card" data-category="прихожая" data-id="hall3" data-name="Прихожая Вариант 3 — Комплект с ящиками">
+                    <button class="select-btn" data-item="hall3">+</button>
                     <div class="carousel">
                         <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="images/прихожая/44418_charli-prikhozhaya-s-yaschikami-.jpg" alt="Прихожая Вариант 3 - фото 1" class="zoomable" data-description="Прихожая Вариант 3 — фото 1: Комплект прихожей с ящиками">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="images/прихожая/41332_charli-shkaf-3-kh-stvorchatyy-.jpg" alt="Прихожая Вариант 3 - фото 2" class="zoomable" data-description="Прихожая Вариант 3 — фото 2: Шкаф 3х створчатый">
-                            </div>
+                            <div class="carousel-item active"><img src="images/прихожая/44418_charli-prikhozhaya-s-yaschikami-.jpg" alt="Прихожая Вариант 3 — фото 1" class="zoomable" data-description="Прихожая Вариант 3 — фото 1"></div>
+                            <div class="carousel-item"><img src="images/прихожая/41332_charli-shkaf-3-kh-stvorchatyy-.jpg" alt="Прихожая Вариант 3 — фото 2" class="zoomable" data-description="Прихожая Вариант 3 — фото 2"></div>
                         </div>
-                        <button class="carousel-btn prev">‹</button>
-                        <button class="carousel-btn next">›</button>
+                        <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                        <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
                     </div>
                     <div class="variant-content">
                         <h3>Вариант 3</h3>
@@ -2001,53 +1184,32 @@
 
         <!-- Кухня -->
         <section class="section" id="kitchen">
-            <h2>Кухня</h2>
+            <h2>🍳 Кухня</h2>
             <p>Кухонный гарнитур до 2.00 метров, цветовое решение на выбор, модульность подгоняется под помещение.</p>
-            <p><strong>В стоимость входит:</strong></p>
-            <ul>
-                <li>Корпуса, фасады, ручки</li>
-                <li>Столешница, стеновая панель</li>
-                <li>Все планки для столешницы, плинтус пристенный, цоколь</li>
-                <li>Мойка из искусственного камня, смеситель</li>
-                <li>Сушилка, лоток для столовых приборов</li>
-            </ul>
-            
-            <div class="variant-grid" style="margin-top: 30px;">
-                <!-- Вариант 1 -->
-                <div class="variant-card" data-category="кухня" data-id="kitchen1" data-name="Кухня Вариант 1 - Белые фасады с деревом">
-                    <button class="select-btn" data-item="kitchen1">➕</button>
-                    <img src="images/кухни/WhatsApp Image 2025-12-02 at 13.40.06.jpeg" alt="Кухня Вариант 1" class="kitchen-photo zoomable" data-description="Кухня Вариант 1: Кухонный гарнитур с белыми фасадами и деревянными элементами">
-                    <div class="variant-content">
-                        <h3>Вариант 1</h3>
-                        <p>Кухонный гарнитур с белыми фасадами и деревянными элементами</p>
-                    </div>
+            <p><strong>В стоимость входит:</strong> Корпуса, фасады, ручки, столешница, стеновая панель, планки, плинтус, цоколь, мойка из иск. камня, смеситель, сушилка, лоток для приборов.</p>
+
+            <div class="variant-grid" style="margin-top: 25px;">
+                <div class="variant-card" data-category="кухня" data-id="kitchen1" data-name="Кухня Вариант 1 — Белые фасады с деревом">
+                    <button class="select-btn" data-item="kitchen1">+</button>
+                    <img src="images/кухни/WhatsApp Image 2025-12-02 at 13.40.06.jpeg" alt="Кухня Вариант 1" class="kitchen-photo zoomable" data-description="Кухня Вариант 1 — Белые фасады с деревом">
+                    <div class="variant-content"><h3>Вариант 1</h3><p>Кухонный гарнитур с белыми фасадами и деревянными элементами</p></div>
                 </div>
-                
-                <!-- Вариант 2 -->
-                <div class="variant-card" data-category="кухня" data-id="kitchen2" data-name="Кухня Вариант 2 - Классический стиль">
-                    <button class="select-btn" data-item="kitchen2">➕</button>
-                    <img src="images/кухни/WhatsApp Image 2025-12-02 at 12.36.07.jpeg" alt="Кухня Вариант 2" class="kitchen-photo zoomable" data-description="Кухня Вариант 2: Кухонный гарнитур в классическом стиле с темными фасадами">
-                    <div class="variant-content">
-                        <h3>Вариант 2</h3>
-                        <p>Кухонный гарнитур в классическом стиле с темными фасадами</p>
-                    </div>
+                <div class="variant-card" data-category="кухня" data-id="kitchen2" data-name="Кухня Вариант 2 — Классический стиль">
+                    <button class="select-btn" data-item="kitchen2">+</button>
+                    <img src="images/кухни/WhatsApp Image 2025-12-02 at 12.36.07.jpeg" alt="Кухня Вариант 2" class="kitchen-photo zoomable" data-description="Кухня Вариант 2 — Классический стиль">
+                    <div class="variant-content"><h3>Вариант 2</h3><p>Кухонный гарнитур в классическом стиле с тёмными фасадами</p></div>
                 </div>
-                
-                <!-- Вариант 3 -->
-                <div class="variant-card" data-category="кухня" data-id="kitchen3" data-name="Кухня Вариант 3 - Глянцевые фасады">
-                    <button class="select-btn" data-item="kitchen3">➕</button>
-                    <img src="images/кухни/WhatsApp Image 2025-12-02 at 13.40.03.jpeg" alt="Кухня Вариант 3" class="kitchen-photo zoomable" data-description="Кухня Вариант 3: Современный кухонный гарнитур с глянцевыми фасадами">
-                    <div class="variant-content">
-                        <h3>Вариант 3</h3>
-                        <p>Современный кухонный гарнитур с глянцевыми фасадами</p>
-                    </div>
+                <div class="variant-card" data-category="кухня" data-id="kitchen3" data-name="Кухня Вариант 3 — Глянцевые фасады">
+                    <button class="select-btn" data-item="kitchen3">+</button>
+                    <img src="images/кухни/WhatsApp Image 2025-12-02 at 13.40.03.jpeg" alt="Кухня Вариант 3" class="kitchen-photo zoomable" data-description="Кухня Вариант 3 — Глянцевые фасады">
+                    <div class="variant-content"><h3>Вариант 3</h3><p>Современный кухонный гарнитур с глянцевыми фасадами</p></div>
                 </div>
             </div>
         </section>
 
-        <!-- Дополнительная информация -->
+        <!-- Полный комплект -->
         <section class="package-details">
-            <h3>📋 Полный комплект пакета "Стандарт для Студии":</h3>
+            <h3>📋 Полный комплект пакета «Стандарт для Студии»:</h3>
             <ul>
                 <li>Шкаф + комод</li>
                 <li>Диван или кровать с матрасом</li>
@@ -2059,20 +1221,13 @@
                         <li>Направляющие скрытого монтажа с доводчиками</li>
                         <li>Столешница 38 мм</li>
                         <li>Стеновая панель</li>
-                        <li>Мойка иск.камень + смеситель</li>
+                        <li>Мойка иск. камень + смеситель</li>
                         <li>Сушилка двухуровневая</li>
                     </ul>
                 </li>
-                <li>Техника:
-                    <ul>
-                        <li>Холодильник</li>
-                        <li>Варочная поверхность</li>
-                        <li>Вытяжка</li>
-                        <li>Микроволновка</li>
-                    </ul>
-                </li>
-                <li>Карниз + шторы блэкаут - 1 комплект</li>
-                <li>Доставка, подъем, сборка</li>
+                <li>Техника: холодильник, варочная поверхность, вытяжка, микроволновка</li>
+                <li>Карниз + шторы блэкаут — 1 комплект</li>
+                <li>Доставка, подъём, сборка</li>
             </ul>
         </section>
 
@@ -2085,726 +1240,281 @@
     </div>
 
     <footer>
-        <p>© 2026 Пакет стандарт для Студии</p>
-        <p>Контакты: 8-911-925-88-56 | Brwmebelspb@yandex.ru</p>
-        <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">
-            💬 Напишите нам ВКонтакте: <a href="https://vk.com/im/convo/-96810994?entrypoint=community_page&tab=all" style="color: #34b7f1; text-decoration: none;">Перейти в чат</a>
+        <p style="font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 8px;">Мебель и Стиль</p>
+        <p style="color: rgba(255,255,255,0.7);">© 2026 Пакет Стандарт для Студии</p>
+        <p style="color: rgba(255,255,255,0.7);">📞 8-911-928-88-56 | ✉️ Brwmebelspb@yandex.ru</p>
+        <p style="margin-top: 8px; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+            💬 Напишите нам: <a href="https://vk.com/im/convo/-96810994?entrypoint=community_page&tab=all" target="_blank">Перейти в чат ВК</a>
         </p>
     </footer>
 
     <script>
-        // ========== ПРОГРЕСС-БАР ==========
-        const progressBar = document.getElementById('progressBar');
-        
-        window.addEventListener('scroll', function() {
-            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = (winScroll / height) * 100;
-            progressBar.style.width = scrolled + "%";
-        });
-
-        // ========== БЫСТРАЯ НАВИГАЦИЯ ==========
-        const quickNav = document.getElementById('quickNav');
-        const navLinks = quickNav.querySelectorAll('a');
-        const sections = document.querySelectorAll('.section');
-        const header = document.getElementById('top');
-
-        window.addEventListener('scroll', function() {
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
+        (function() {
+            // Тема
+            const themeToggle = document.getElementById('themeToggle'), body = document.body, themeIcon = themeToggle.querySelector('i');
+            if (localStorage.getItem('theme') === 'dark') { body.classList.add('dark-theme'); themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); }
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-theme');
+                if (body.classList.contains('dark-theme')) { themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun'); localStorage.setItem('theme','dark'); }
+                else { themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon'); localStorage.setItem('theme','light'); }
             });
 
-            if (pageYOffset < 100) {
-                current = 'top';
-            }
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = targetId === '#top' ? header : document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 20,
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // ========== АНИМАЦИИ ==========
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    
-                    if (entry.target.classList.contains('section')) {
-                        const cards = entry.target.querySelectorAll('.variant-card');
-                        cards.forEach((card, index) => {
-                            setTimeout(() => {
-                                card.classList.add('visible');
-                            }, index * 100);
-                        });
-                    }
-                }
-            });
-        }, observerOptions);
-
-        sections.forEach(section => {
-            observer.observe(section);
-        });
-
-        // ========== ЧЕК-ЛИСТ ==========
-        const checklistToggle = document.getElementById('checklistToggle');
-        const checklistContainer = document.getElementById('checklistContainer');
-        const checklistItems = document.getElementById('checklistItems');
-        const clearChecklist = document.getElementById('clearChecklist');
-        const selectedCount = document.getElementById('selectedCount');
-        const checklistSummary = document.getElementById('checklistSummary');
-        const orderBtn = document.getElementById('orderBtn');
-        const orderBtnSmall = document.getElementById('orderBtnSmall');
-
-        let selectedItems = JSON.parse(localStorage.getItem('selectedItems_studio')) || {};
-
-        function updateChecklistCounter() {
-            const count = Object.keys(selectedItems).length;
-            
-            if (count > 0) {
-                checklistToggle.innerHTML = `📋<span class="checklist-counter">${count}</span>`;
-            } else {
-                checklistToggle.innerHTML = '📋';
-            }
-            
-            if (count > 0) {
-                checklistToggle.title = `Выбрано элементов: ${count}. Нажмите для просмотра`;
-            } else {
-                checklistToggle.title = 'Список выбора. Нажмите для просмотра';
-            }
-        }
-        
-        function showNotification(message, type = 'add') {
-            const notification = document.createElement('div');
-            notification.className = `notification ${type === 'remove' ? 'remove' : ''}`;
-            
-            const icon = type === 'remove' ? '❌' : '✅';
-            notification.innerHTML = `
-                <span style="font-size: 20px;">${icon}</span>
-                <span>${message}</span>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.style.animation = 'fadeOut 0.3s ease';
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 2700);
-        }
-
-        function loadChecklist() {
-            updateChecklistDisplay();
-            updateSelectButtons();
-            updateSelectedCount();
-            updateChecklistCounter();
-            addTooltipsToSelectButtons();
-        }
-
-        function updateChecklistDisplay() {
-            const items = Object.values(selectedItems);
-            
-            if (items.length === 0) {
-                checklistItems.innerHTML = '<div class="checklist-empty">Выберите понравившиеся варианты</div>';
-                checklistSummary.style.display = 'none';
-                return;
-            }
-
-            checklistSummary.style.display = 'block';
-            
-            const grouped = {};
-            items.forEach(item => {
-                if (!grouped[item.category]) {
-                    grouped[item.category] = [];
-                }
-                grouped[item.category].push(item);
-            });
-
-            let html = '';
-            
-            const categoryNames = {
-                'шкаф-тумба': 'Шкаф + тумба',
-                'диван-кровать': 'Диван / Кровать',
-                'обеденная': 'Обеденная группа',
-                'стулья': 'Стулья',
-                'прихожая': 'Прихожая',
-                'кухня': 'Кухня'
-            };
-
-            Object.keys(grouped).forEach(category => {
-                html += `<div class="checklist-category">${categoryNames[category] || category}</div>`;
-                
-                grouped[category].forEach(item => {
-                    html += `
-                        <div class="checklist-item" data-id="${item.id}">
-                            <input type="checkbox" class="checklist-checkbox" checked>
-                            <span class="checklist-label">${item.name}</span>
-                            <button class="select-btn small" onclick="removeFromChecklist('${item.id}')">❌</button>
-                        </div>
-                    `;
-                });
-            });
-
-            checklistItems.innerHTML = html;
-            
-            checklistItems.querySelectorAll('.checklist-checkbox').forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    const itemId = this.closest('.checklist-item').dataset.id;
-                    if (!this.checked) {
-                        removeFromChecklist(itemId);
-                    }
-                });
-            });
-        }
-
-        function updateSelectButtons() {
-            document.querySelectorAll('.select-btn').forEach(btn => {
-                const itemId = btn.dataset.item;
-                if (selectedItems[itemId]) {
-                    btn.classList.add('selected');
-                    btn.innerHTML = '✓';
-                } else {
-                    btn.classList.remove('selected');
-                    btn.innerHTML = '➕';
-                }
-            });
-        }
-
-        function updateSelectedCount() {
-            const count = Object.keys(selectedItems).length;
-            selectedCount.textContent = count;
-        }
-
-        function addToChecklist(itemId, category, name) {
-            selectedItems[itemId] = {
-                id: itemId,
-                category: category,
-                name: name,
-                date: new Date().toISOString()
-            };
-            
-            localStorage.setItem('selectedItems_studio', JSON.stringify(selectedItems));
-            loadChecklist();
-            
-            updateChecklistCounter();
-            
-            const btn = document.querySelector(`.select-btn[data-item="${itemId}"]`);
-            btn.classList.add('selected');
-            btn.innerHTML = '✓';
-            
-            showNotification(`Добавлено: ${name}`);
-            
-            if (Object.keys(selectedItems).length === 1) {
-                setTimeout(() => {
-                    showNotification('📝 Теперь можно оформить заявку! Нажмите кнопку "Заявка"', 'add');
-                }, 1000);
-            }
-        }
-
-        function removeFromChecklist(itemId) {
-            const itemName = selectedItems[itemId]?.name || 'Элемент';
-            delete selectedItems[itemId];
-            localStorage.setItem('selectedItems_studio', JSON.stringify(selectedItems));
-            loadChecklist();
-            
-            updateChecklistCounter();
-            
-            const btn = document.querySelector(`.select-btn[data-item="${itemId}"]`);
-            if (btn) {
-                btn.classList.remove('selected');
-                btn.innerHTML = '➕';
-            }
-            
-            showNotification(`Удалено: ${itemName}`, 'remove');
-        }
-
-        function addTooltipsToSelectButtons() {
-            document.querySelectorAll('.select-btn').forEach(btn => {
-                const oldTooltip = btn.querySelector('.select-tooltip');
-                if (oldTooltip) {
-                    oldTooltip.remove();
-                }
-                
-                const tooltip = document.createElement('div');
-                tooltip.className = 'select-tooltip';
-                
-                const itemId = btn.dataset.item;
-                if (selectedItems[itemId]) {
-                    tooltip.textContent = 'Удалить из списка';
-                } else {
-                    tooltip.textContent = 'Добавить в список';
-                }
-                
-                btn.appendChild(tooltip);
-            });
-        }
-
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('select-btn') && !e.target.closest('.checklist-item')) {
-                const btn = e.target;
-                const itemId = btn.dataset.item;
-                const card = btn.closest('.variant-card, .chair-item');
-                const category = card.dataset.category;
-                const name = card.dataset.name;
-                
-                if (selectedItems[itemId]) {
-                    removeFromChecklist(itemId);
-                } else {
-                    addToChecklist(itemId, category, name);
-                }
-                
-                e.stopPropagation();
-            }
-        });
-
-        checklistToggle.addEventListener('click', function() {
-            checklistContainer.classList.toggle('active');
-            this.classList.toggle('active');
-            this.innerHTML = checklistContainer.classList.contains('active') ? 
-                (Object.keys(selectedItems).length > 0 ? 
-                    `✕<span class="checklist-counter">${Object.keys(selectedItems).length}</span>` : '✕') : 
-                (Object.keys(selectedItems).length > 0 ? 
-                    `📋<span class="checklist-counter">${Object.keys(selectedItems).length}</span>` : '📋');
-        });
-
-        clearChecklist.addEventListener('click', function() {
-            if (Object.keys(selectedItems).length > 0) {
-                if (confirm('Очистить весь список выбранных вариантов?')) {
-                    selectedItems = {};
-                    localStorage.removeItem('selectedItems_studio');
-                    loadChecklist();
-                    showNotification('Список очищен', 'remove');
-                }
-            }
-        });
-
-        document.addEventListener('click', function(e) {
-            if (!checklistContainer.contains(e.target) && !checklistToggle.contains(e.target)) {
-                checklistContainer.classList.remove('active');
-                checklistToggle.classList.remove('active');
-                checklistToggle.innerHTML = Object.keys(selectedItems).length > 0 ? 
-                    `📋<span class="checklist-counter">${Object.keys(selectedItems).length}</span>` : '📋';
-            }
-        });
-
-        document.addEventListener('DOMContentLoaded', loadChecklist);
-
-        // ========== ПРЕДУПРЕЖДЕНИЕ ==========
-        const warningModal = document.getElementById('warningModal');
-        const closeWarning = document.getElementById('closeWarning');
-        const showChecklistBtn = document.getElementById('showChecklist');
-        
-        function showWarningModal() {
-            warningModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeWarningModal() {
-            warningModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        closeWarning.addEventListener('click', closeWarningModal);
-        
-        showChecklistBtn.addEventListener('click', function() {
-            closeWarningModal();
-            checklistContainer.classList.add('active');
-            checklistToggle.classList.add('active');
-            checklistToggle.innerHTML = Object.keys(selectedItems).length > 0 ? 
-                `✕<span class="checklist-counter">${Object.keys(selectedItems).length}</span>` : '✕';
-        });
-        
-        warningModal.addEventListener('click', function(e) {
-            if (e.target === warningModal) {
-                closeWarningModal();
-            }
-        });
-
-        // ========== МОДАЛЬНОЕ ОКНО ДЛЯ ФОТО ==========
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const closeModal = document.getElementById('closeModal');
-        const prevModal = document.getElementById('prevModal');
-        const nextModal = document.getElementById('nextModal');
-        
-        let currentImages = [];
-        let currentIndex = 0;
-        
-        document.querySelectorAll('.zoomable').forEach((img) => {
-            img.addEventListener('click', function() {
-                currentImages = Array.from(document.querySelectorAll('.zoomable')).map(img => ({
-                    src: img.src,
-                    alt: img.alt,
-                    description: img.dataset.description || img.alt
-                }));
-                
-                currentIndex = currentImages.findIndex(item => item.src === this.src);
-                openModal(currentIndex);
-            });
-        });
-        
-        function openModal(index) {
-            if (currentImages.length === 0) return;
-            
-            currentIndex = index;
-            const currentImage = currentImages[currentIndex];
-            
-            modalImage.src = currentImage.src;
-            modalImage.alt = currentImage.alt;
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-        
-        function closeModalFunc() {
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-        
-        function nextImage() {
-            if (currentImages.length === 0) return;
-            currentIndex = (currentIndex + 1) % currentImages.length;
-            openModal(currentIndex);
-        }
-        
-        function prevImage() {
-            if (currentImages.length === 0) return;
-            currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
-            openModal(currentIndex);
-        }
-        
-        closeModal.addEventListener('click', closeModalFunc);
-        prevModal.addEventListener('click', prevImage);
-        nextModal.addEventListener('click', nextImage);
-        
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModalFunc();
-            }
-        });
-        
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                if (modal.classList.contains('active')) {
-                    closeModalFunc();
-                }
-                const instructionModal = document.getElementById('instructionModal');
-                if (instructionModal && instructionModal.classList.contains('active')) {
-                    instructionModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            } else if (e.key === 'ArrowRight' && modal.classList.contains('active')) {
-                nextImage();
-            } else if (e.key === 'ArrowLeft' && modal.classList.contains('active')) {
-                prevImage();
-            }
-        });
-
-        // ========== КАРУСЕЛИ ==========
-        document.addEventListener('DOMContentLoaded', function() {
+            // Карусели
             document.querySelectorAll('.carousel').forEach(carousel => {
                 const inner = carousel.querySelector('.carousel-inner');
                 const items = carousel.querySelectorAll('.carousel-item');
                 const prevBtn = carousel.querySelector('.prev');
                 const nextBtn = carousel.querySelector('.next');
                 let currentIndex = 0;
-
-                function updateCarousel() {
-                    inner.style.transform = `translateX(-${currentIndex * 100}%)`;
-                }
-
-                prevBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1;
-                    updateCarousel();
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0;
-                    updateCarousel();
-                });
-            });
-        });
-
-        // ========== СИСТЕМА ЗАЯВОК ==========
-        const orderModal = document.getElementById('orderModal');
-        const closeOrderModal = document.getElementById('closeOrderModal');
-        const orderPreview = document.getElementById('orderPreview');
-        const orderForm = document.getElementById('orderForm');
-        const successMessage = document.getElementById('successMessage');
-        const sendToVK = document.getElementById('sendToVK');
-        const copyOrder = document.getElementById('copyOrder');
-        const orderName = document.getElementById('orderName');
-        const orderPhone = document.getElementById('orderPhone');
-        const orderEmail = document.getElementById('orderEmail');
-        const orderComment = document.getElementById('orderComment');
-
-        function openOrderModal() {
-            const items = Object.values(selectedItems);
-            
-            if (items.length === 0) {
-                showWarningModal();
-                return;
-            }
-            
-            updateOrderPreview();
-            
-            orderForm.style.display = 'block';
-            successMessage.classList.remove('active');
-            orderName.value = '';
-            orderPhone.value = '';
-            orderEmail.value = '';
-            orderComment.value = '';
-            
-            setTimeout(() => orderName.focus(), 300);
-            
-            orderModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function updateOrderPreview() {
-            const items = Object.values(selectedItems);
-            
-            if (items.length === 0) {
-                orderPreview.innerHTML = '<div class="order-item">Ничего не выбрано</div>';
-                return;
-            }
-
-            const grouped = {};
-            items.forEach(item => {
-                if (!grouped[item.category]) {
-                    grouped[item.category] = [];
-                }
-                grouped[item.category].push(item);
+                function update() { inner.style.transform = `translateX(-${currentIndex * 100}%)`; }
+                prevBtn.addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex > 0) ? currentIndex - 1 : items.length - 1; update(); });
+                nextBtn.addEventListener('click', (e) => { e.stopPropagation(); currentIndex = (currentIndex < items.length - 1) ? currentIndex + 1 : 0; update(); });
             });
 
-            let html = '';
-            
-            const categoryEmojis = {
-                'шкаф-тумба': '🗄️',
-                'диван-кровать': '🛋️',
-                'обеденная': '🍽️',
-                'стулья': '🪑',
-                'прихожая': '🚪',
-                'кухня': '🍳'
+            // Модальное окно фото
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const closeModal = document.getElementById('closeModal');
+            const prevModalBtn = document.getElementById('prevModal');
+            const nextModalBtn = document.getElementById('nextModal');
+            let currentImages = [], currentIndex = 0;
+
+            function getAllZoomableImages() {
+                return Array.from(document.querySelectorAll('.zoomable')).map(i => ({
+                    src: i.src,
+                    alt: i.alt,
+                    description: i.dataset.description || i.alt
+                }));
+            }
+
+            document.body.addEventListener('click', function(e) {
+                if (e.target.classList.contains('zoomable')) {
+                    e.stopPropagation();
+                    currentImages = getAllZoomableImages();
+                    currentIndex = currentImages.findIndex(item => item.src === e.target.src);
+                    openModal(currentIndex);
+                }
+            });
+
+            function openModal(index) {
+                if (currentImages.length === 0) return;
+                currentIndex = index;
+                modalImage.src = currentImages[currentIndex].src;
+                modalImage.alt = currentImages[currentIndex].alt;
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeModalFunc() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+            function nextImage() {
+                if (currentImages.length === 0) return;
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                modalImage.src = currentImages[currentIndex].src;
+                modalImage.alt = currentImages[currentIndex].alt;
+            }
+            function prevImage() {
+                if (currentImages.length === 0) return;
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                modalImage.src = currentImages[currentIndex].src;
+                modalImage.alt = currentImages[currentIndex].alt;
+            }
+
+            closeModal.addEventListener('click', closeModalFunc);
+            prevModalBtn.addEventListener('click', prevImage);
+            nextModalBtn.addEventListener('click', nextImage);
+            modal.addEventListener('click', function(e) { if (e.target === modal) closeModalFunc(); });
+            document.addEventListener('keydown', function(e) {
+                if (!modal.classList.contains('active')) return;
+                if (e.key === 'Escape') closeModalFunc();
+                if (e.key === 'ArrowRight') nextImage();
+                if (e.key === 'ArrowLeft') prevImage();
+            });
+
+            // Чек-лист
+            const checklistToggle = document.getElementById('checklistToggle');
+            const checklistContainer = document.getElementById('checklistContainer');
+            const checklistItems = document.getElementById('checklistItems');
+            const clearChecklist = document.getElementById('clearChecklist');
+            const selectedCount = document.getElementById('selectedCount');
+            const checklistSummary = document.getElementById('checklistSummary');
+            const orderBtn = document.getElementById('orderBtn');
+            const orderBtnSmall = document.getElementById('orderBtnSmall');
+            const orderModal = document.getElementById('orderModal');
+            const closeOrderModal = document.getElementById('closeOrderModal');
+            const orderPreview = document.getElementById('orderPreview');
+            const orderForm = document.getElementById('orderForm');
+            const successMessage = document.getElementById('successMessage');
+            const sendToVK = document.getElementById('sendToVK');
+            const copyOrder = document.getElementById('copyOrder');
+            const orderName = document.getElementById('orderName');
+            const orderPhone = document.getElementById('orderPhone');
+            const orderEmail = document.getElementById('orderEmail');
+            const orderComment = document.getElementById('orderComment');
+
+            let selectedItems = JSON.parse(localStorage.getItem('selectedItems_studio_kp')) || {};
+
+            function updateChecklistCounter() {
+                const count = Object.keys(selectedItems).length;
+                checklistToggle.innerHTML = count > 0 ? `📋<span class="checklist-counter">${count}</span>` : '📋';
+            }
+
+            function showNotification(message, type = 'add') {
+                const notification = document.createElement('div');
+                notification.className = `notification ${type === 'remove' ? 'remove' : ''}`;
+                notification.innerHTML = `<span>${type === 'remove' ? '✕' : '✓'}</span><span>${message}</span>`;
+                document.body.appendChild(notification);
+                setTimeout(() => { if (notification.parentNode) notification.parentNode.removeChild(notification); }, 2500);
+            }
+
+            function loadChecklist() {
+                updateChecklistDisplay();
+                updateSelectButtons();
+                updateSelectedCount();
+                updateChecklistCounter();
+            }
+
+            function updateChecklistDisplay() {
+                const items = Object.values(selectedItems);
+                if (items.length === 0) {
+                    checklistItems.innerHTML = '<div class="checklist-empty">Выберите понравившиеся варианты</div>';
+                    checklistSummary.style.display = 'none';
+                    return;
+                }
+                checklistSummary.style.display = 'flex';
+                const grouped = {};
+                items.forEach(item => { if (!grouped[item.category]) grouped[item.category] = []; grouped[item.category].push(item); });
+                const names = { 'шкаф-тумба':'Шкаф + тумба','диван-кровать':'Диван / Кровать','обеденная':'Обеденная группа','стулья':'Стулья','прихожая':'Прихожая','кухня':'Кухня' };
+                let html = '';
+                Object.keys(grouped).forEach(cat => {
+                    html += `<div class="checklist-category">${names[cat] || cat}</div>`;
+                    grouped[cat].forEach(item => {
+                        html += `<div class="checklist-item" data-id="${item.id}"><span class="checklist-label">${item.name}</span><button class="checklist-btn clear" style="padding:2px 6px;font-size:0.7rem;" onclick="window.removeFromChecklist('${item.id}')">✕</button></div>`;
+                    });
+                });
+                checklistItems.innerHTML = html;
+            }
+
+            function updateSelectButtons() {
+                document.querySelectorAll('.select-btn').forEach(btn => {
+                    const itemId = btn.dataset.item;
+                    if (selectedItems[itemId]) { btn.classList.add('selected'); btn.textContent = '✓'; }
+                    else { btn.classList.remove('selected'); btn.textContent = '+'; }
+                });
+            }
+
+            function updateSelectedCount() {
+                selectedCount.textContent = Object.keys(selectedItems).length;
+            }
+
+            function addToChecklist(itemId, category, name) {
+                selectedItems[itemId] = { id: itemId, category, name, date: new Date().toISOString() };
+                localStorage.setItem('selectedItems_studio_kp', JSON.stringify(selectedItems));
+                loadChecklist();
+                showNotification(`Добавлено: ${name}`);
+            }
+
+            window.removeFromChecklist = function(itemId) {
+                const itemName = selectedItems[itemId]?.name || 'Элемент';
+                delete selectedItems[itemId];
+                localStorage.setItem('selectedItems_studio_kp', JSON.stringify(selectedItems));
+                loadChecklist();
+                showNotification(`Удалено: ${itemName}`, 'remove');
             };
 
-            Object.keys(grouped).forEach(category => {
-                grouped[category].forEach(item => {
-                    const emoji = categoryEmojis[category] || '✅';
-                    html += `<div class="order-item">${emoji} ${item.name}</div>`;
-                });
-            });
-
-            orderPreview.innerHTML = html;
-        }
-
-        function closeOrderModalFunc() {
-            orderModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        }
-
-        function generateOrderText() {
-            const items = Object.values(selectedItems);
-            const now = new Date();
-            const dateStr = now.toLocaleDateString('ru-RU');
-            const timeStr = now.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit' });
-            
-            let text = `🏠 ЗАЯВКА: Пакет стандарт для Студии\n`;
-            text += `📅 Дата: ${dateStr} ${timeStr}\n\n`;
-            
-            text += `📋 Выбранные варианты:\n`;
-            
-            const grouped = {};
-            items.forEach(item => {
-                if (!grouped[item.category]) {
-                    grouped[item.category] = [];
-                }
-                grouped[item.category].push(item);
-            });
-
-            const categoryEmojis = {
-                'шкаф-тумба': '🗄️',
-                'диван-кровать': '🛋️',
-                'обеденная': '🍽️',
-                'стулья': '🪑',
-                'прихожая': '🚪',
-                'кухня': '🍳'
-            };
-
-            const categoryNames = {
-                'шкаф-тумба': 'Шкаф + тумба',
-                'диван-кровать': 'Диван / Кровать',
-                'обеденная': 'Обеденная группа',
-                'стулья': 'Стулья',
-                'прихожая': 'Прихожая',
-                'кухня': 'Кухня'
-            };
-
-            Object.keys(grouped).forEach(category => {
-                const emoji = categoryEmojis[category] || '✅';
-                const name = categoryNames[category] || category;
-                
-                grouped[category].forEach(item => {
-                    text += `• ${emoji} ${name}: ${item.name}\n`;
-                });
-            });
-
-            text += `\n👤 Контактные данные:\n`;
-            text += `Имя: ${orderName.value}\n`;
-            text += `Телефон: ${orderPhone.value}\n`;
-            
-            if (orderEmail.value.trim()) {
-                text += `Email: ${orderEmail.value}\n`;
-            }
-            
-            if (orderComment.value.trim()) {
-                text += `💬 Комментарий: ${orderComment.value}\n`;
-            }
-
-            return text;
-        }
-
-        function sendToVKFunc() {
-            if (!orderName.value.trim()) {
-                showNotification('Пожалуйста, введите ваше имя', 'remove');
-                orderName.focus();
-                return;
-            }
-            
-            if (!orderPhone.value.trim()) {
-                showNotification('Пожалуйста, введите ваш телефон', 'remove');
-                orderPhone.focus();
-                return;
-            }
-
-            const orderText = generateOrderText();
-            copyToClipboard(orderText);
-            
-            orderModal.classList.remove('active');
-            
-            const instructionModal = document.getElementById('instructionModal');
-            const instructionPreviewText = document.getElementById('instructionPreviewText');
-            
-            instructionPreviewText.textContent = orderText;
-            instructionModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            
-            const vkUrl = `https://vk.com/im/convo/-96810994?entrypoint=community_page&tab=all`;
-            
-            const goToVKBtn = document.getElementById('goToVKBtn');
-            const closeInstructionBtn = document.getElementById('closeInstructionModal');
-            const copyAgainBtn = document.getElementById('copyAgainBtn');
-            
-            const newGoToVK = goToVKBtn.cloneNode(true);
-            const newClose = closeInstructionBtn.cloneNode(true);
-            const newCopy = copyAgainBtn.cloneNode(true);
-            
-            goToVKBtn.parentNode.replaceChild(newGoToVK, goToVKBtn);
-            closeInstructionBtn.parentNode.replaceChild(newClose, closeInstructionBtn);
-            copyAgainBtn.parentNode.replaceChild(newCopy, copyAgainBtn);
-            
-            newGoToVK.addEventListener('click', function() {
-                window.open(vkUrl, '_blank');
-                instructionModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-                showNotification('✅ Переходим в ВК. Вставьте текст заявки в сообщение!');
-            });
-            
-            newClose.addEventListener('click', function() {
-                instructionModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-            
-            newCopy.addEventListener('click', function() {
-                copyToClipboard(orderText);
-                showNotification('✅ Текст заявки скопирован повторно!');
-            });
-            
-            instructionModal.addEventListener('click', function(e) {
-                if (e.target === instructionModal) {
-                    instructionModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('select-btn') && !e.target.closest('.checklist-item')) {
+                    e.stopPropagation();
+                    const btn = e.target;
+                    const itemId = btn.dataset.item;
+                    const card = btn.closest('.variant-card, .chair-item');
+                    const category = card.dataset.category;
+                    const name = card.dataset.name;
+                    if (selectedItems[itemId]) { window.removeFromChecklist(itemId); }
+                    else { addToChecklist(itemId, category, name); }
                 }
             });
-            
-            showNotification('✅ Заявка готова! Ознакомьтесь с инструкцией');
-        }
 
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                console.log('Заявка скопирована в буфер обмена');
-            }).catch(err => {
-                console.error('Ошибка копирования: ', err);
-                const textArea = document.createElement('textarea');
-                textArea.value = text;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
+            checklistToggle.addEventListener('click', () => {
+                checklistContainer.classList.toggle('active');
+                checklistToggle.classList.toggle('active');
             });
-        }
 
-        orderBtn.addEventListener('click', openOrderModal);
-        orderBtnSmall.addEventListener('click', openOrderModal);
-        closeOrderModal.addEventListener('click', closeOrderModalFunc);
-        
-        orderModal.addEventListener('click', function(e) {
-            if (e.target === orderModal) {
-                closeOrderModalFunc();
+            clearChecklist.addEventListener('click', () => {
+                if (Object.keys(selectedItems).length > 0 && confirm('Очистить весь список выбранных вариантов?')) {
+                    selectedItems = {};
+                    localStorage.removeItem('selectedItems_studio_kp');
+                    loadChecklist();
+                    showNotification('Список очищен', 'remove');
+                }
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!checklistContainer.contains(e.target) && !checklistToggle.contains(e.target)) {
+                    checklistContainer.classList.remove('active');
+                    checklistToggle.classList.remove('active');
+                }
+            });
+
+            // Заявка
+            function openOrderModal() {
+                const items = Object.values(selectedItems);
+                if (items.length === 0) { showNotification('Выберите хотя бы один вариант!', 'remove'); return; }
+                updateOrderPreview();
+                orderForm.style.display = 'block';
+                successMessage.classList.remove('active');
+                orderName.value = ''; orderPhone.value = ''; orderEmail.value = ''; orderComment.value = '';
+                orderModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
-        });
-        
-        sendToVK.addEventListener('click', sendToVKFunc);
-        
-        copyOrder.addEventListener('click', function() {
-            if (!orderName.value.trim() || !orderPhone.value.trim()) {
-                showNotification('Заполните Имя и Телефон', 'remove');
-                return;
+
+            function updateOrderPreview() {
+                const items = Object.values(selectedItems);
+                if (items.length === 0) { orderPreview.innerHTML = '<div class="order-item">Ничего не выбрано</div>'; return; }
+                let html = '';
+                items.forEach(item => { html += `<div class="order-item">✅ ${item.name}</div>`; });
+                orderPreview.innerHTML = html;
             }
-            
-            const orderText = generateOrderText();
-            copyToClipboard(orderText);
-            showNotification('✅ Заявка скопирована в буфер обмена!');
-        });
 
-        // ========== VK КНОПКА ==========
-        const vkBtn = document.querySelector('.vk-float');
-        
-        setTimeout(() => {
-            vkBtn.style.opacity = '1';
-        }, 1000);
+            function closeOrderModalFunc() { orderModal.classList.remove('active'); document.body.style.overflow = ''; }
+            function generateOrderText() {
+                const items = Object.values(selectedItems);
+                const now = new Date();
+                let text = `🏠 ЗАЯВКА: Пакет Стандарт для Студии\n📅 ${now.toLocaleDateString('ru-RU')} ${now.toLocaleTimeString('ru-RU', {hour:'2-digit',minute:'2-digit'})}\n\n📋 Выбранные варианты:\n`;
+                items.forEach(item => { text += `• ${item.name}\n`; });
+                text += `\n👤 Имя: ${orderName.value}\n📱 Телефон: ${orderPhone.value}`;
+                if (orderEmail.value.trim()) text += `\n📧 Email: ${orderEmail.value}`;
+                if (orderComment.value.trim()) text += `\n💬 Комментарий: ${orderComment.value}`;
+                return text;
+            }
 
-        window.removeFromChecklist = removeFromChecklist;
+            function sendToVKFunc() {
+                if (!orderName.value.trim() || !orderPhone.value.trim()) { showNotification('Заполните имя и телефон', 'remove'); return; }
+                const text = generateOrderText();
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Текст скопирован! Переходим в ВК...');
+                    closeOrderModalFunc();
+                    window.open('https://vk.com/im/convo/-96810994?entrypoint=community_page&tab=all', '_blank');
+                }).catch(() => {
+                    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta);
+                    showNotification('Текст скопирован! Переходим в ВК...');
+                    closeOrderModalFunc();
+                    window.open('https://vk.com/im/convo/-96810994?entrypoint=community_page&tab=all', '_blank');
+                });
+            }
+
+            orderBtn.addEventListener('click', openOrderModal);
+            orderBtnSmall.addEventListener('click', openOrderModal);
+            closeOrderModal.addEventListener('click', closeOrderModalFunc);
+            orderModal.addEventListener('click', function(e) { if (e.target === orderModal) closeOrderModalFunc(); });
+            sendToVK.addEventListener('click', sendToVKFunc);
+            copyOrder.addEventListener('click', function() {
+                if (!orderName.value.trim() || !orderPhone.value.trim()) { showNotification('Заполните имя и телефон', 'remove'); return; }
+                const text = generateOrderText();
+                navigator.clipboard.writeText(text).then(() => showNotification('✅ Текст скопирован!')).catch(() => showNotification('Ошибка копирования', 'remove'));
+            });
+
+            loadChecklist();
+        })();
     </script>
-
 </body>
 </html>
